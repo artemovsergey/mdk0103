@@ -33,11 +33,16 @@ import com.example.kotlinexample.models.User
 import com.example.kotlinexample.ui.theme.KotlinExampleTheme
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.material3.Slider
 import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -113,7 +118,6 @@ fun UserCard(user: User) {
 }
 
 
-
 @Composable
 fun UserList(users: List<User>) {
     LazyColumn {
@@ -122,21 +126,6 @@ fun UserList(users: List<User>) {
     }
 }
 
-
-
-//@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO,
-//    showBackground = true,
-//    name = "Light Mode")
-//@Composable
-//fun UserCardPreview() {
-//
-//    KotlinExampleTheme {
-//        Surface(modifier = Modifier.fillMaxSize()) {
-//            UserCard(user = User("Sergey",35))
-//        }
-//    }
-//
-//}
 
 @Preview(name = "Список пользователей")
 @Composable
@@ -152,4 +141,64 @@ fun UserListPreview(){
     }
 }
 
+@Preview(name = "Список пользователей",
+         uiMode = Configuration.UI_MODE_NIGHT_YES,
+         showSystemUi = true)
+@Composable
+fun UserListPreview1(){
+    KotlinExampleTheme {
+        Surface(modifier = Modifier.fillMaxSize()) {
+            val users = mutableListOf<User>()
+            users.add(User("asv", 3))
+            users.add(User("asv", 4))
+            users.add(User("asv", 5))
+            UserList(users = users)
+        }
+    }
+}
 
+
+@Composable
+fun DemoText(message: String, fontSize: Float) {
+    Text(
+        text = message,
+        fontSize = fontSize.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun DemoSlider(sliderPosition: Float, onPositionChange: (Float) -> Unit ) {
+    Slider(
+        modifier = Modifier.padding(10.dp),
+        valueRange = 20f..38f,
+        value = sliderPosition,
+        onValueChange = { onPositionChange(it) }
+    )
+}
+
+
+@Preview(name="Слайдер", uiMode = Configuration.UI_MODE_NIGHT_NO)
+@Composable
+fun DemoScreenPreview(){
+    var sliderPosition by remember { mutableStateOf(20f) }
+    val handlePositionChange = { position : Float -> sliderPosition = position  }
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        DemoText(message = "Welcome to Compose", fontSize = sliderPosition)
+        Spacer(modifier = Modifier.height(150.dp))
+        DemoSlider(
+            sliderPosition = sliderPosition,
+            onPositionChange = handlePositionChange
+        )
+        Text(
+            style = MaterialTheme.typography.headlineMedium,
+            text = sliderPosition.toInt().toString() + "sp"
+        )
+    }
+
+}
