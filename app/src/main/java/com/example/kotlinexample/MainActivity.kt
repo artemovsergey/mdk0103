@@ -3,6 +3,7 @@ package com.example.kotlinexample
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -23,13 +24,23 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun UserInfo(name: String, age: Int) {
-    Text(
-        text = "Здравствуйте,  $name. Ваш возраст:  $age лет"
-    )
+
+    var i = 0;
+    while (i < 10){
+        Text(
+            text = "Здравствуйте,  $name. Ваш возраст:  $age лет"
+        )
+        i += 1;
+    }
+    // можно применить функция reapeat{10}
+
+
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    UserInfo(name = "Сергей", age = 35 )
+    Column {
+        UserInfo(name = "Сергей", age = 35 )
+    }
 }
