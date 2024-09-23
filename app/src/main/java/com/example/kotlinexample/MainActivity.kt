@@ -65,6 +65,19 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun UsersPreview(){
+
+    val users = mutableListOf<User>()
+    users.add(User("asv", 3))
+    users.add(User("asv", 4))
+    users.add(User("asv", 5))
+    UserList(users = users)
 }
 
 

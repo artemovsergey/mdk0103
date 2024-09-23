@@ -1,41 +1,33 @@
 # Kotlin Jetpack Compose
 
-# MainActivity.kt
+# Ресурсы
 
-```kt
-package com.example.kotlinexample
+- https://github.com/android/compose-samples
+- https://play.kotlinlang.org/
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.kotlinexample.ui.theme.KotlinExampleTheme
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-           UserInfo(name = "Сергей", age = 35 )
-        }
-    }
-}
+## Заметки
 
-@Composable
-fun UserInfo(name: String, age: Int) {
-    Text(
-        text = "Здравствуйте,  $name. Ваш возраст:  $age лет"
-    )
-}
+Подготовка: основы Kotlin, lambda выражения
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    UserInfo(name = "Сергей", age = 35 )
-}
-```
+Лекция 1. Jetpack Compose. Функциии @Composable
+
+Упражнение: создать функцию, которая выводит информацию о пользователе
+
+Лекция 2. Preview
+Упражнение: создать фукцию, которая выводит 10 раз определенный текст
+
+Лекция 3. Box, Column, Box, Modifier
+Упражнение: создать таблицу умножения
+
+Практическая работа 1. Создание интерфейса. Card
+Практическая работа 2. Изменение темы
+Практическая работа 3. Работа с текстом Text
+Практическая работа 4. Работа с изображением
+
+
+Практическая работа 5. Создание макета
+
+
+Лекция 2. Material Components
+
