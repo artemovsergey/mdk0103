@@ -1,62 +1,65 @@
-# Practice:Click behavior
+# Практика: поведение при нажатии
 
-1. Before you begin
-In this pathway, you learned how to add a button to an app and how to modify the app to respond to a button click. Now, it's time to practice what you learned by building an app.
+1. Прежде чем начать
+В этом разделе вы узнали, как добавить кнопку в приложение и как изменить приложение, чтобы оно реагировало на нажатие кнопки. Теперь пришло время применить полученные знания на практике, создав приложение.
 
-You will create an app called the Lemonade app. First, read the requirements of the Lemonade app to understand how the app should look and behave. If you want to challenge yourself, you can build the app on your own from there. If you get stuck, you can read subsequent sections to receive more hints and guidance about how to break down the problem and approach it step by step.
+Вы создадите приложение под названием Lemonade app. Сначала прочитайте требования к приложению Lemonade, чтобы понять, как оно должно выглядеть и вести себя. Если вы хотите испытать себя, вы можете создать приложение самостоятельно. Если вы застряли, читайте последующие разделы, чтобы получить больше подсказок и советов о том, как разбить проблему на части и решить ее шаг за шагом.
 
-Work through this practice problem at a pace that's comfortable for you. Take as much time as you need to build each part of the app's functionality. The solution code for the Lemonade app is available at the end, but it's recommended that you try to build the app yourself before you check the solution. Remember that the provided solution is not the only way to build the Lemonade app, so it's completely valid to build it a different way as long as the app requirements are met.
+Проработайте эту практическую задачу в удобном для вас темпе. Уделите столько времени, сколько вам нужно для создания каждой части функциональности приложения. Код решения для приложения Lemonade доступен в конце, но мы рекомендуем вам попробовать собрать приложение самостоятельно, прежде чем проверять решение. Помните, что представленное решение не является единственным способом создания приложения Lemonade, поэтому вы можете создать его по-другому, если требования к приложению соблюдены.
 
-Prerequisites
-Able to create a simple UI layout in Compose with text and image composables
-Able to build an interactive app that responds to a button click
-Basic understanding of composition and recomposition
-Familiarity with the basics of the Kotlin programming language, including functions, variables, conditionals, and lambdas
-What you'll need
-A computer with internet access and Android Studio installed.
+Необходимые условия
+Уметь создать простой макет пользовательского интерфейса в Compose с композитными элементами текста и изображений
+Уметь создавать интерактивное приложение, реагирующее на нажатие кнопки
+Базовое понимание композиции и рекомпозиции
+Знакомство с основами языка программирования Kotlin, включая функции, переменные, условия и лямбды
+Что вам понадобится
+Компьютер с доступом в Интернет и установленной программой Android Studio.
 
 
-# 2. App overview
-You're going to help us bring our vision of making digital lemonade to life! The goal is to create a simple, interactive app that lets you juice lemons when you tap the image on screen until you have a glass of lemonade. Consider it a metaphor or maybe just a fun way to pass the time!
+
+# 2. Обзор приложения
+Вы поможете нам воплотить в жизнь нашу идею создания цифрового лимонада! Цель - создать простое интерактивное приложение, которое позволит вам выжимать сок из лимонов, касаясь изображения на экране, пока у вас не получится стакан лимонада. Считайте это метафорой или просто забавным способом скоротать время!
+
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/dfcc3bc3eb43e4dd_856.png)
 
 
-Here's how the app works:
+Вот как работает приложение:
 
-When the user first launches the app, they see a lemon tree. There's a label that prompts them to tap the lemon tree image to "select" a lemon from the tree.
-After they tap the lemon tree, the user sees a lemon. They are prompted to tap the lemon to "squeeze" it to make lemonade. They need to tap the lemon several times to squeeze it. The number of taps required to squeeze the lemon is different each time and is a randomly generated number between 2 to 4 (inclusive).
-After they've tapped the lemon the required number of times, they see a refreshing glass of lemonade! They are asked to tap the glass to "drink" the lemonade.
-After they tap the lemonade glass, they see an empty glass. They are asked to tap the empty glass to start again.
-After they tap the empty glass, they see the lemon tree and can begin the process again. More lemonade please!
-Here are larger screenshots of how the app looks:
+Когда пользователь впервые запускает приложение, он видит лимонное дерево. Там есть ярлык, который предлагает коснуться изображения лимонного дерева, чтобы «выбрать» лимон с дерева.
+После нажатия на лимонное дерево пользователь видит лимон. Ему предлагается коснуться лимона, чтобы «выжать» его и приготовить лимонад. Чтобы сжать лимон, нужно коснуться его несколько раз. Количество нажатий, необходимое для выжимания лимона, каждый раз разное и представляет собой случайно сгенерированное число от 2 до 4 (включительно).
+После того как они коснутся лимона необходимое количество раз, они увидят освежающий стакан лимонада! Им предлагается коснуться стакана, чтобы «выпить» лимонад.
+После того как они коснутся стакана с лимонадом, они увидят пустой стакан. Их просят коснуться пустого стакана, чтобы начать сначала.
+После того как они коснутся пустого стакана, они увидят лимонное дерево и смогут начать процесс заново. Больше лимонада, пожалуйста!
+Вот более крупные скриншоты того, как выглядит приложение:
+
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/89cec3022a462039_856.png)
 
-For each step of making lemonade, there's a different image and text label on the screen, and different behavior for how the app responds to a click. For example, when the user taps the lemon tree, the app shows a lemon.
+Для каждого этапа приготовления лимонада на экране есть свое изображение и текстовый ярлык, а также разное поведение приложения в ответ на нажатие. Например, когда пользователь нажимает на лимонное дерево, приложение показывает лимон.
 
-Your job is to build the app's UI layout and implement the logic for the user to move through all the steps to make lemonade.
+Ваша задача - создать макет пользовательского интерфейса приложения и реализовать логику, позволяющую пользователю пройти все этапы приготовления лимонада.
 
+# 3. Начните работу
+Создайте проект
+В Android Studio создайте новый проект с шаблоном Empty Activity со следующими данными:
 
-# 3. Get started
-Create a project
-In Android Studio, create a new project with the Empty Activity template with the following details:
+Имя: Lemonade
+Название пакета: com.example.lemonade
+Минимальный SDK: 24
+Когда приложение успешно создано и проект собран, переходите к следующему разделу.
 
-Name: Lemonade
-Package name: com.example.lemonade
-Minimum SDK: 24
-When the app has been successfully created and the project builds, then proceed with the next section.
+Добавление изображений
+Вам предоставляются четыре векторных файла для рисования, которые вы будете использовать в приложении Lemonade.
 
-Add images
-You're provided with four vector drawable files that you use in the Lemonade app.
+Получите эти файлы:
 
-Get the files:
+Скачайте zip-файл с изображениями для приложения.
+Дважды щелкните по zip-файлу. Этот шаг распакует изображения в папку.
+Добавьте изображения в папку drawable вашего приложения. Если вы не помните, как это сделать, обратитесь к кодебалету «Создание интерактивного приложения Dice Roller».
 
-Download a zip file of the images for the app.
-Double click the zip file. This step unzips the images into a folder.
-Add the images into the drawable folder of your app. If you don't remember how to do this, see the Create an interactive Dice Roller app codelab.
+Папка вашего проекта должна выглядеть как на следующем снимке экрана, где активы lemon_drink.xml, lemon_restart.xml, lemon_squeeze.xml и lemon_tree.xml теперь находятся в каталоге res > drawable:
 
-Your project folder should look like the following screenshot in which the lemon_drink.xml, lemon_restart.xml, lemon_squeeze.xml, and lemon_tree.xml assets now appear under the res > drawable directory:
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/ccc5a4aa8a7e9fbd_856.png)
 
