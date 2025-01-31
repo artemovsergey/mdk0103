@@ -1,22 +1,24 @@
-# Practice:Build Superheroes app
+# Практика: Построй супергероев
 
-# 1. Before you begin
-Congratulations! In this pathway you learned the basics of Material Design, and how to add simple animations to your app. Now it is time to put what you learned into practice.
+# 1. Прежде чем начать
+Поздравляем! На этом пути вы узнали об основах Material Design и о том, как добавить простую анимацию в ваше приложение. Теперь пришло время применить полученные знания на практике.
 
-In this practice set, you'll build on the concepts you learned in this pathway by creating a Superheroes app. This app focuses on creating the components necessary to build a scrollable list and a polished UI using the Material Design principles you learned in Material Theming with Jetpack Compose codelab.
+В этом практическом задании вы будете развивать концепции, изученные на этом пути, создавая приложение Superheroes. Это приложение сосредоточено на создании компонентов, необходимых для создания прокручиваемого списка и полированного пользовательского интерфейса с использованием принципов Material Design, которые вы изучили в коде Лаборатории Material Theming with Jetpack Compose.
 
-The solution code is available at the end, but try to solve the exercises before you check it. Consider the solutions as one way to implement the app. There's a lot of room for improvement, so feel free to experiment and try different things.
+Код решения доступен в конце, но попробуйте решить упражнения, прежде чем проверять его. Рассматривайте решения как один из способов реализации приложения. Есть много возможностей для улучшения, поэтому не стесняйтесь экспериментировать и пробовать разные вещи.
 
-Work through the problems at a pace that's comfortable to you. You're encouraged to take as much time as you need to solve each problem thoughtfully.
 
-Prerequisites
-Complete Android Basics in Compose course work through the Simple Animation with Jetpack Compose.
-What you'll need
-A computer with internet access and Android Studio installed.
-What you'll build
-A Superheroes app that displays a list of superheroes.
+Решайте задачи в удобном для вас темпе. Вы можете потратить столько времени, сколько вам нужно для вдумчивого решения каждой задачи.
 
-The final app will look like the following in both light and dark theme:
+Предварительные условия
+Пройдите курс «Основы Android в Compose» и изучите «Простую анимацию с Jetpack Compose».
+Что вам понадобится
+Компьютер с доступом в интернет и установленной программой Android Studio.
+Что вы создадите
+Приложение Superheroes, которое отображает список супергероев.
+
+Готовое приложение будет выглядеть следующим образом в светлой и темной темах:
+
 
 <div style="display:flex">
     <div>
@@ -27,18 +29,19 @@ The final app will look like the following in both light and dark theme:
     </div>
 </div>
 
-2. Get started
-In this task, you set up the project and create the dummy data for the superheroes.
+2. Начало работы
+В этом задании вы настроите проект и создадите фиктивные данные для супергероев.
 
-Create a new project with the Empty Activity template and a minimum SDK of 24.
-Download the assets for the app: superhero images, and app logo from here. Refer to the Change the app icon codelab for a refresher on how to add an app icon. Refer to Create an interactive Dice Roller app codelab for a refresher on how to add images to your app.
-Download the Cabin bold and Cabin regular font files from https://fonts.google.com. Explore the different font files available. Refer to Material Theming with Jetpack Compose codelab for customizing the typography in your app.
-Create a data class to hold the data for each superhero. Create a new package named model for the Hero data class to organize your code. Your list item can look something like the following:
+Создайте новый проект с шаблоном Empty Activity и минимальным SDK 24.
+Загрузите активы для приложения: изображения супергероев и логотип приложения отсюда. Обратитесь к кодебалету «Изменение значка приложения», чтобы узнать, как добавить значок приложения. Обратитесь к codelab «Создание интерактивного приложения Dice Roller», чтобы узнать, как добавлять изображения в приложение.
+Загрузите файлы шрифтов Cabin bold и Cabin regular с сайта https://fonts.google.com. Изучите различные доступные файлы шрифтов. Обратитесь к кодебалету Material Theming with Jetpack Compose для настройки типографики в вашем приложении.
+Создайте класс данных для хранения данных для каждого супергероя. Создайте новый пакет с именем model для класса данных Hero, чтобы упорядочить свой код. Ваш элемент списка может выглядеть примерно так:
 
 
-Each superhero list item displays three pieces of unique information: name, description, and an image.
+Каждый элемент списка супергероев отображает три части уникальной информации: имя, описание и изображение.
 
-In the same model package, create another file for all the heroes information you would like to display. For example, name, description, and image resource. The following is a sample data set for your inspiration.
+В том же пакете model создайте еще один файл для всей информации о героях, которую вы хотите отобразить. Например, имя, описание и изображение. Ниже приведен пример набора данных для вашего вдохновения.
+
 
 ```kt
 object HeroesRepository {
@@ -76,7 +79,8 @@ object HeroesRepository {
     )
 }
 ```
-Add the heroes name and description strings in the strings.xml file.
+Добавьте строки имени и описания героев в файл strings.xml.
+
 
 ```xml
 <resources>
@@ -96,16 +100,18 @@ Add the heroes name and description strings in the strings.xml file.
 </resources>
 ```
 
-# 3. Material Theming
-In this section you will add the app's color palette, typography, and shapes to improve the look and feel of the app.
+# 3. Оформление материала
+В этом разделе вы добавите цветовую палитру, шрифт и формы приложения, чтобы улучшить его внешний вид и восприятие.
 
-The following Color, Type, and Shape are just recommendations for the theme. Explore and modify different color schemes.
+Следующие цвета, шрифты и формы являются лишь рекомендациями для данной темы. Изучайте и изменяйте различные цветовые схемы.
 
-Use Material Theme Builder to create a new theme for the app.
+Используйте Material Theme Builder, чтобы создать новую тему для приложения.
 
-Color
+
+Цвет
 
 ui.theme/Color.kt
+
 ```kt
 import androidx.compose.ui.graphics.Color
 
@@ -170,9 +176,10 @@ val md_theme_dark_outlineVariant = Color(0xFF45483D)
 val md_theme_dark_scrim = Color(0xFF000000)
 ```
 
-Shape
+Форма
 
 ui.theme/Shape.kt
+
 ```kt
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes
@@ -229,9 +236,10 @@ val Typography = Typography(
 )
 ```
 
-Theme
+Тема
 
 ui.theme/Theme.kt
+
 ```kt
 import android.app.Activity
 import android.os.Build
@@ -347,51 +355,49 @@ fun SuperheroesTheme(
 }
 ```
 
-# 4. Display list
-The first step in creating a list is to create a list item.
+# 4. Отображение списка
+Первым шагом в создании списка является создание элемента списка.
 
-Create a file called HeroesScreen.kt, under the com.example.superheroes package. You will be creating a list item and list composables in this file.
-Create a composable to represent a superhero list item, which looks like the following screenshot and UI specifications.
+Создайте файл HeroesScreen.kt в пакете com.example.superheroes. В этом файле вы создадите элемент списка и составные элементы списка.
+Создайте композит, представляющий элемент списка супергероев, который выглядит как на следующем скриншоте и спецификации пользовательского интерфейса.
 
-Follow this UI specification or be creative and design your own list item:
+Следуйте этой спецификации пользовательского интерфейса или проявите креативность и создайте свой собственный элемент списка:
 
-Card elevation is 2dp
-Height of the list item is 72dp with 16dp padding
-Clip radius of the list item is 16dp
-Box layout with image with size 72dp
-Clip radius of the image is 8dp
-Space between the image and the text is 16dp
-Style for superhero's name is DisplaySmall
-Style for superhero's description is BodyLarge
+Высота карты - 2dp
+Высота элемента списка - 72dp с отступом 16dp
+Радиус обрезки элемента списка - 16dp
+Макет коробки с изображением размером 72dp
+Радиус обрезки изображения - 8dp
+Пространство между изображением и текстом - 16dp
+Стиль имени супергероя - DisplaySmall
+Стиль для описания супергероя - BodyLarge
 
-Explore different padding and size options, as per the Material 3 guidelines, padding should be increments of 4dp.
+Исследуйте различные варианты размеров и набивки, согласно руководству Material 3, набивка должна быть с шагом в 4dp.
 
-Create the lazy column
+Создайте ленивую колонку
 
-Create another composable that takes the list of heroes and displays the list. This is where you use a LazyColumn.
-Use the following UI specifications for the padding.
+Создайте еще один компонент, который будет принимать список героев и отображать его. Здесь вы используете LazyColumn.
+Используйте следующие спецификации UI для подкладки.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-practice-superheroes/img/af5116f770dd0ad_856.png)
 
-After you finish the implementation, your app should match the following screenshot:
+После завершения реализации ваше приложение должно соответствовать следующему скриншоту:
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-practice-superheroes/img/6589c7a5fb4a2294_856.png)
 
+# 5. Добавьте верхнюю панель приложений
+Добавьте верхнюю панель приложений для вашего приложения.
 
-# 5. Add Top app bar
-Add a top app bar for your app.
-
-In MainActivity.kt, add a composable to display the top app bar. Add text to the top app bar; it could be the app name. Align it in the center both horizontally and vertically.
-You could set the top app bar with style as DisplayLarge.
+В файле MainActivity.kt добавьте композит для отображения верхней панели приложений. Добавьте текст на верхнюю панель приложений; это может быть название приложения. Выровняйте его по центру как по горизонтали, так и по вертикали.
+Вы можете задать верхней панели приложений стиль DisplayLarge.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-practice-superheroes/img/2e8eeb35ac3e631b_856.png)
 
+Используйте строительные леса для отображения верхней панели приложений. При необходимости обратитесь к документации Top app bar - Material Design 3.
+Настройка цвета строки состояния
+Чтобы сделать ваше приложение «от края до края», вы можете настроить цвет строки состояния в соответствии с цветом фона.
 
-Use scaffold to display the top app bar. Refer to the Top app bar – Material Design 3 documentation if needed.
-Customize status bar color
-To make your app edge-to-edge, you can customize the status bar color to match the background color.
-
-In the Theme.kt, add this new method to change the status bar and navigation bar colors for edge to edge.
+В файле Theme.kt добавьте этот новый метод, чтобы изменить цвет строки состояния и навигационной панели для режима «от края до края».
 
 ```kt
 /**
@@ -415,7 +421,7 @@ private fun setUpEdgeToEdge(view: View, darkTheme: Boolean) {
 }
 ```
 
-In the SuperheroesTheme() function, call the setUpEdgeToEdge() function from within the SideEffect block.
+В функции SuperheroesTheme() вызовите функцию setUpEdgeToEdge() из блока SideEffect.
 
 ```kt
 fun SuperheroesTheme(
