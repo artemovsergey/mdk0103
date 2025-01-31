@@ -63,103 +63,103 @@
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/ccc5a4aa8a7e9fbd_856.png)
 
-Double click a vector drawable file to see the image preview.
-Select the Design pane (not the Code or Split views) to see a full-width view of the image.
+Дважды щелкните файл с векторным рисунком, чтобы увидеть предварительный просмотр изображения.
+Выберите панель Design (не вид Code или Split), чтобы увидеть изображение во всю ширину.
 
 
-After the image files are included in your app, you can refer to them in your code. For example, if the vector drawable file is called lemon_tree.xml, then in your Kotlin code, you can refer to the drawable using its resource ID in the format of R.drawable.lemon_tree.
+После того как файлы изображений включены в приложение, вы можете ссылаться на них в коде. Например, если файл векторного отрисовщика называется lemon_tree.xml, то в коде на Kotlin вы можете ссылаться на отрисовщик, используя его идентификатор ресурса в формате R.drawable.lemon_tree.
 
-Add string resources
-Add the following strings to your project in the res > values > strings.xml file:
+Добавьте строковые ресурсы
+Добавьте следующие строки в проект в файл res > values > strings.xml:
 
-Tap the lemon tree to select a lemon
-Keep tapping the lemon to squeeze it
-Tap the lemonade to drink it
-Tap the empty glass to start again
-The following strings are also needed in your project. They're not displayed on the screen in the user interface, but these are used for the content description of the images in your app to describe what the images are. Add these additional strings in your app's strings.xml file:
+Нажмите на лимонное дерево, чтобы выбрать лимон
+Продолжайте касаться лимона, чтобы сжать его
+Коснитесь лимонада, чтобы выпить его
+Коснитесь пустого стакана, чтобы начать сначала
+Следующие строки также необходимы в вашем проекте. Они не отображаются на экране в пользовательском интерфейсе, но они используются в описании содержимого изображений в вашем приложении, чтобы описать, что это за изображения. Добавьте эти дополнительные строки в файл strings.xml вашего приложения:
 
-Lemon tree
-Lemon
-Glass of lemonade
-Empty glass
-If you don't remember how to declare string resources in your app, see the Create an interactive Dice Roller app codelab or refer to String. Give each string resource an appropriate identifier name that describes the value it contains. For example, for the string "Lemon", you can declare it in the strings.xml file with the identifier name lemon_content_description, and then refer to it in your code using the resource ID: R.string.lemon_content_description.
+Лимонное дерево
+Лимон
+Стакан с лимонадом
+Пустой стакан
+Если вы не помните, как объявлять строковые ресурсы в своем приложении, посмотрите codelab по созданию интерактивного приложения Dice Roller или обратитесь к String. Дайте каждому строковому ресурсу соответствующее имя-идентификатор, описывающее значение, которое он содержит. Например, для строки «Lemon» вы можете объявить ее в файле strings.xml с именем-идентификатором lemon_content_description, а затем ссылаться на нее в коде, используя идентификатор ресурса: R.string.lemon_content_description.
 
-Steps of making lemonade
-Now you have the string resources and image assets that are needed to implement the app. Here's a summary of each step of the app and what is shown on the screen:
+Шаги по созданию лимонада
+Теперь у вас есть строковые ресурсы и графические активы, необходимые для реализации приложения. Вот краткое описание каждого шага приложения и того, что отображается на экране:
 
-Step 1:
+Шаг 1:
 
-Text: Tap the lemon tree to select a lemon
-Image: Lemon tree (lemon_tree.xml)
+Текст: Нажмите на лимонное дерево, чтобы выбрать лимон
+Изображение: Лимонное дерево (lemon_tree.xml)
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/b2b0ae4400c0d06d_856.png)
 
-Step 2:
+Шаг 2:
 
-Text: Keep tapping the lemon to squeeze it
-Image: Lemon (lemon_squeeze.xml)
+Текст: Продолжайте касаться лимона, чтобы выжать его
+Изображение: Лимон (lemon_squeeze.xml)
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/7c6281156d027a8_856.png)
 
-Step 3:
+Шаг 3:
 
-Text: Tap the lemonade to drink it
-Image: Full glass of lemonade (lemon_drink.xml)
+Текст: Коснитесь лимонада, чтобы выпить его
+Изображение: Полный стакан лимонада (lemon_drink.xml)
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/38340dfe3df0f721_856.png)
 
-Step 4:
+Шаг 4:
 
-Text: Tap the empty glass to start again
-Image: Empty glass (lemon_restart.xml)
+Текст: Нажмите на пустой стакан, чтобы начать сначала
+Изображение: Пустой стакан (lemon_restart.xml)
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/e9442e201777352b_856.png)
 
-Add visual polish
-To make your version of the app look like these final screenshots, there are a couple more visual adjustments to make in the app:
+Добавьте визуальной полировки
+Чтобы ваша версия приложения выглядела так же, как эти финальные скриншоты, нужно сделать еще несколько визуальных настроек в приложении:
 
-Increase the font size of the text so that it's larger than the default font size (such as 18sp).
-Add additional space in between the text label and the image below it, so they're not too close to each other (such as 16dp).
-Give the button an accent color and slightly rounded corners to let the users know that they can tap the image.
-If you want to challenge yourself, build the rest of the app based on the description of how it should work. If you want more guidance, proceed to the next section.
+Увеличьте размер шрифта текста, чтобы он был больше, чем размер шрифта по умолчанию (например, 18sp).
+Добавьте дополнительное пространство между текстовой надписью и изображением под ней, чтобы они не находились слишком близко друг к другу (например, 16dp).
+Придайте кнопке акцентный цвет и слегка закругленные углы, чтобы дать пользователям понять, что они могут нажимать на изображение.
+Если вы хотите испытать себя, создайте остальную часть приложения, основываясь на описании того, как оно должно работать. Если вам нужны дополнительные рекомендации, переходите к следующему разделу.
 
-> Warning: Do not proceed with reading the rest of the instructions unless you want hints revealed. It's recommended for you to try the problem yourself and only consult the rest of the instructions if you get stuck.
+> Предупреждение: Не продолжайте читать остальные инструкции, если не хотите получить подсказки. Рекомендуется попробовать решить проблему самостоятельно и обращаться к остальным инструкциям только в том случае, если вы застряли.
 
-# 4. Plan out how to build the app
-When building an app, it's a good idea to get a minimal working version of the app done first. Then gradually add more functionality until you complete all desired functionality. Identify a small piece of end-to-end functionality that you can build first.
+# 4. Планируйте, как создать приложение
+При создании приложения лучше всего сначала сделать минимальную рабочую версию приложения. Затем постепенно добавляйте функциональность, пока не завершите все желаемые функции. Определите небольшой фрагмент сквозной функциональности, который вы можете построить первым.
 
-In the Lemonade app, notice that the key part of the app is transitioning from one step to another with a different image and text label shown each time. Initially, you can ignore the special behavior of the squeeze state because you can add this functionality later after you build the foundation of the app.
+В приложении Lemonade обратите внимание, что ключевой частью приложения является переход от одного шага к другому, при этом каждый раз показывается другое изображение и текстовая надпись. Изначально вы можете игнорировать особое поведение состояния сжатия, потому что вы сможете добавить эту функциональность позже, когда построите основу приложения.
 
-Below is a proposal of the high-level overview of the steps that you can take to build the app:
+Ниже приведен обзор шагов, которые вы можете предпринять для создания приложения:
 
-Build the UI layout for the first step of making lemonade, which prompts the user to select a lemon from the tree. You can skip the border around the image for now because that's a visual detail that you can add later.
+Создайте макет пользовательского интерфейса для первого шага приготовления лимонада, который предлагает пользователю выбрать лимон с дерева. Границу вокруг изображения можно пока пропустить, потому что это визуальная деталь, которую можно добавить позже.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/b2b0ae4400c0d06d_856.png)
 
-Implement the behavior in the app so that when the user taps the lemon tree, the app shows a lemon image and its corresponding text label. This covers the first two steps of making lemonade.
+Реализуйте поведение в приложении, чтобы при нажатии на лимонное дерево оно показывало изображение лимона и соответствующую текстовую надпись. Это охватывает первые два этапа приготовления лимонада.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/adbf0d217e1ac77d_856.png)
 
-Add code so that the app displays the rest of the steps to make lemonade, when the image is tapped each time. At this point, a single tap on the lemon can transition to displaying the glass of lemonade.
+Добавьте код, чтобы при каждом нажатии на изображение приложение отображало остальные шаги по приготовлению лимонада. В этот момент однократное нажатие на лимон может перейти к отображению стакана с лимонадом.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/33a36bcbe200af53_856.png)
 
-Add custom behavior for the lemon squeeze step, so that the user needs to "squeeze", or tap, the lemon a specific number of times that's randomly generated from 2 to 4.
+Добавьте пользовательское поведение для этапа выжимания лимона, чтобы пользователь должен был «выжать», или коснуться, лимона определенное количество раз, которое генерируется случайным образом от 2 до 4.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/a23102cb6c068174_856.png)
 
-Finalize the app with any other necessary visual polish details. For example, change the font size and add a border around the image to make the app look more polished. Verify that the app follows good coding practices, such as adhering to the Kotlin coding style guidelines and adding comments to your code.
+Завершите работу над приложением, добавив все необходимые детали визуальной полировки. Например, измените размер шрифта или добавьте рамку вокруг изображения, чтобы приложение выглядело более полированным. Убедитесь в том, что приложение следует хорошим практикам кодирования, например, придерживается руководства по стилю кодирования Kotlin и добавляет комментарии к коду.
 
-If you can use these high-level steps to guide you in the implementation of the Lemonade app, go ahead and build the app on your own. If you find that you need additional guidance on each of these five steps, proceed to the next section.
+Если вы можете использовать эти основные шаги для реализации приложения Lemonade, приступайте к его созданию самостоятельно. Если же вы обнаружите, что вам нужны дополнительные рекомендации по каждому из этих пяти шагов, переходите к следующему разделу.
 
 
-# 5. Implement the app
-Build the UI layout
-First modify the app so that it displays the image of the lemon tree and its corresponding text label, which says Tap the lemon tree to select a lemon, in the center of the screen. There should also be 16dp of space in between the text and the image below it.
+# 5. Реализуйте приложение
+Создайте макет пользовательского интерфейса
+Сначала измените приложение так, чтобы в центре экрана отображалось изображение лимонного дерева и соответствующая ему текстовая надпись, которая гласит: «Нажмите на лимонное дерево, чтобы выбрать лимон». Между текстом и изображением под ним должно быть 16dp пространства.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/b2b0ae4400c0d06d_856.png)
 
-If it helps, you can use the following starter code in the MainActivity.kt file:
+Если это поможет, вы можете использовать следующий стартовый код в файле MainActivity.kt:
 
 ```kt
 package com.example.lemonade
@@ -207,30 +207,30 @@ fun DefaultPreview() {
 }
 ```
 
-This code is similar to the code that's autogenerated by Android Studio. However, instead of a Greeting() composable, there's a LemonApp() composable defined and it doesn't expect a parameter. The DefaultPreview() composable is also updated to use the LemonApp() composable so you can preview your code easily.
+Этот код похож на код, который автоматически генерируется Android Studio. Однако вместо композита Greeting() определен композит LemonApp(), который не ожидает параметра. Композит DefaultPreview() также обновлен для использования композита LemonApp(), чтобы вы могли легко просматривать свой код.
 
-After you enter this code in Android Studio, modify the LemonApp() composable, which should contain the contents of the app. Here are some questions to guide your thought process:
+После ввода этого кода в Android Studio измените компонент LemonApp(), который должен содержать содержимое приложения. Вот несколько вопросов, которые помогут вам сориентироваться в процессе работы:
 
-What composables will you use?
-Is there a standard Compose layout component that can help you arrange the composables into the desired positions?
+Какие компоненты вы будете использовать?
+Существует ли стандартный компонент компоновки Compose, который поможет вам расположить компонент в нужных местах?
 
-> Important: To make your app accessible for more users, remember to set content descriptions on the images to describe what the image contains.
+> Важно: чтобы сделать ваше приложение доступным для большего числа пользователей, не забудьте установить описания содержимого для изображений, чтобы описать, что содержит изображение.
 
-Go and implement this step so that you have the lemon tree and text label displayed in your app, when your app launches. Preview your composable in Android Studio to see how the UI looks as you modify your code. Run the app to ensure that it looks like the screenshot that you saw earlier in this section.
+Выполните этот шаг, чтобы при запуске приложения в нем отображались лимонное дерево и текстовая метка. Предварительно просмотрите ваше приложение в Android Studio, чтобы увидеть, как выглядит пользовательский интерфейс при изменении кода. Запустите приложение, чтобы убедиться, что оно выглядит так же, как на скриншоте, который вы видели ранее в этом разделе.
 
-Return to these instructions when you're done, if you want more guidance on how to add behavior when the image is tapped on.
+Вернитесь к этим инструкциям, если вам нужны дополнительные указания по добавлению поведения при нажатии на изображение.
 
-Add click behavior
-Next you will add code so that when the user taps the image of the lemon tree, the image of the lemon appears along with the text label Keep tapping the lemon to squeeze it. In other words, when you tap the lemon tree, it causes the text and image to change.
+Добавление поведения при нажатии
+Далее вы добавите код, чтобы при нажатии на изображение лимонного дерева появлялось изображение лимона вместе с текстовой надписью Keep tapping the lemon to squeeze it. Другими словами, когда вы касаетесь лимонного дерева, текст и изображение меняются.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/adbf0d217e1ac77d_856.png)
 
-Earlier in this pathway, you learned how to make a button clickable. In the case of the Lemonade app, there's no Button composable. However, you can make any composable, not just buttons, clickable when you specify the clickable modifier on it. For an example, see the clickable documentation page.
+Ранее в этом курсе вы узнали, как сделать кнопку кликабельной. В случае с приложением Lemonade композитная кнопка отсутствует. Однако вы можете сделать любую композицию, а не только кнопку, кликабельной, если укажете для нее модификатор clickable. Пример смотрите на странице документации по clickable.
 
-What should happen when the image is clicked? The code to implement this behavior is non-trivial, so take a step back to revisit a familiar app.
+Что должно происходить при нажатии на изображение? Код для реализации этого поведения нетривиален, поэтому сделайте шаг назад и посмотрите на знакомое приложение.
 
-Look at the Dice Roller app
-Revisit the code from the Dice Roller app to observe how the app displays different dice images based on the value of the dice roll:
+Посмотрите на приложение Dice Roller
+Пересмотрите код приложения Dice Roller, чтобы увидеть, как оно отображает различные изображения костей в зависимости от значения броска костей:
 
 MainActivity.kt in Dice Roller app
 
@@ -259,34 +259,34 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
 ...
 ```
 
-Answer these questions about the Dice Roller app code:
+Ответьте на эти вопросы о коде приложения Dice Roller:
 
-Which variable's value determines the appropriate dice image to display?
-What action from the user triggers that variable to change?
-The DiceWithButtonAndImage() composable function stores the most recent dice roll, in the result variable, which was defined with the remember composable and mutableStateOf() function in this line of code:
+Значение какой переменной определяет соответствующее изображение игральных костей?
+Какое действие пользователя приводит к изменению этой переменной?
+Составная функция DiceWithButtonAndImage() сохраняет последний бросок костей в переменной result, которая была определена с помощью составной функции remember и функции mutableStateOf() в этой строке кода:
 
 ```kt
 var result by remember { mutableStateOf(1) }
 ```
 
-When the result variable gets updated to a new value, Compose triggers recomposition of the DiceWithButtonAndImage() composable, which means that the composable will execute again. The result value is remembered across recompositions, so when the DiceWithButtonAndImage() composable runs again, the most recent result value is used. Using a when statement on the value of the result variable, the composable determines the new drawable resource ID to show and the Image composable displays it.
+Когда переменная result обновляется до нового значения, Compose запускает рекомпозицию композита DiceWithButtonAndImage(), что означает, что композит будет выполнен снова. Значение результата запоминается при всех повторных композициях, поэтому при повторном выполнении композита DiceWithButtonAndImage() будет использоваться последнее значение результата. Используя оператор when для значения переменной result, композит определяет новый идентификатор ресурса drawable для показа, и композит Image отображает его.
 
-Apply what you learned to the Lemonade app
-Now answer similar questions about the Lemonade app:
+Примените полученные знания к приложению Lemonade
+Теперь ответьте на аналогичные вопросы о приложении Lemonade:
 
-Is there a variable that you can use to determine what text and image should be shown on the screen? Define that variable in your code.
-Can you use conditionals in Kotlin to have the app perform different behavior based on the value of that variable? If so, write that conditional statement in your code.
-What action from the user triggers that variable to change? Find the appropriate place in your code where that happens. Add code there to update the variable.
+Есть ли переменная, которую можно использовать для определения того, какой текст и изображение должны быть показаны на экране? Определите эту переменную в своем коде.
+Можете ли вы использовать условные выражения в Kotlin, чтобы приложение выполняло различные действия в зависимости от значения этой переменной? Если да, напишите условный оператор в своем коде.
+Какое действие пользователя вызывает изменение этой переменной? Найдите в коде подходящее место, где это происходит. Добавьте туда код для обновления переменной.
 
-> Note: You may want to represent each step of making lemonade with a number. For example, step 1 of the app has the image of the lemon tree and clicking the image goes to step 2 of the app. This can help you organize which text string goes with which image.
+> Примечание: Возможно, вы захотите обозначить каждый шаг приготовления лимонада цифрой. Например, на шаге 1 приложения есть изображение лимонного дерева, а щелчок по изображению переводит на шаг 2 приложения. Это поможет вам организовать, какая текстовая строка соответствует какому изображению.
 https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/270ecd406fc30120_856.png
 
-This section can be quite challenging to implement and requires changes in multiple places of your code to work correctly. Don't be discouraged if the app doesn't work as you expect right away. Remember that there are multiple correct ways to implement this behavior.
+Этот раздел может быть довольно сложным в реализации и требует изменений во многих местах вашего кода для корректной работы. Не расстраивайтесь, если приложение сразу не будет работать так, как вы ожидаете. Помните, что существует несколько правильных способов реализовать это поведение.
 
-When you're done, run the app and verify that it works. When you launch the app, it should show the image of the lemon tree and its corresponding text label. A single tap of the image of the lemon tree should update the text label and show the image of the lemon. A tap on the lemon image shouldn't do anything for now.
+Когда вы закончите, запустите приложение и убедитесь, что оно работает. Когда вы запустите приложение, оно должно показать изображение лимонного дерева и соответствующую текстовую надпись. Одно нажатие на изображение лимонного дерева должно обновить текстовую надпись и показать изображение лимона. Пока что нажатие на изображение лимона не должно ничего делать.
 
-Add remaining steps
-Now your app can display two of the steps to make lemonade! At this point, your LemonApp() composable may look something like the following code snippet. It's okay if your code looks slightly different as long as the behavior in the app is the same.
+Добавьте оставшиеся шаги
+Теперь ваше приложение может отображать два шага по приготовлению лимонада! На данный момент ваш компонент LemonApp() может выглядеть примерно так, как показано в следующем фрагменте кода. Ничего страшного, если ваш код будет выглядеть немного иначе, главное, чтобы поведение приложения было одинаковым.
 
 ```kt
 ...
@@ -343,17 +343,17 @@ fun LemonApp() {
 ...
 ```
 
-Next you'll add the rest of the steps to make lemonade. A single tap of the image should move the user to the next step of making lemonade, where the text and image both update. You will need to change your code to make it more flexible to handle all steps of the app, not just the first two steps.
+Затем вы добавите остальные шаги по приготовлению лимонада. Одно нажатие на изображение должно перевести пользователя на следующий шаг приготовления лимонада, где обновляются и текст, и изображение. Вам нужно будет изменить код, чтобы сделать его более гибким для обработки всех шагов приложения, а не только первых двух.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/2c0f70529e0cf69d_856.png)
 
-To have different behavior each time that the image is clicked, you need to customize the clickable behavior. More specifically, the lambda that's executed when the image is clicked needs to know which step we're moving to.
+Чтобы при каждом нажатии на изображение оно вело себя по-разному, необходимо настроить поведение клика. Если говорить точнее, то лямбда, которая выполняется при нажатии на изображение, должна знать, к какому шагу мы переходим.
 
-You may start to notice that there's repeated code in your app for each step of making lemonade. For the when statement in the previous code snippet, the code for case 1 is very similar to case 2 with small differences. If it's helpful, create a new composable function, called LemonTextAndImage() for example, that displays text above an image in the UI. By creating a new composable function that takes some input parameters, you have a reusable function that's useful in multiple scenarios as long as you change the inputs that you pass in. It's your job to figure out what the input parameters should be. After you create this composable function, update your existing code to call this new function in relevant places.
+Вы можете заметить, что в вашем приложении повторяется код для каждого шага создания лимонада. Для оператора when в предыдущем фрагменте кода код для случая 1 очень похож на код для случая 2 с небольшими отличиями. Если это полезно, создайте новую составную функцию, например, LemonTextAndImage(), которая отображает текст над изображением в пользовательском интерфейсе. Создав новую составную функцию, которая принимает некоторые входные параметры, вы получаете многократно используемую функцию, которая будет полезна в различных сценариях, если вы измените входные параметры, которые вы передаете. Ваша задача - выяснить, какими должны быть входные параметры. После того как вы создадите эту композитную функцию, обновите существующий код, чтобы вызвать новую функцию в соответствующих местах.
 
-Another advantage to having a separate composable like LemonTextAndImage() is that your code becomes more organized and robust. When you call LemonTextAndImage(), you can be sure that both the text and image will get updated to the new values. Otherwise, it's easy to accidentally miss one case where an updated text label is displayed with the wrong image.
+Еще одно преимущество наличия отдельной композиции, такой как LemonTextAndImage(), заключается в том, что ваш код становится более организованным и надежным. Когда вы вызываете LemonTextAndImage(), вы можете быть уверены, что и текст, и изображение будут обновлены до новых значений. В противном случае легко случайно пропустить случай, когда обновленная текстовая метка отображается с неправильным изображением.
 
-Here's one additional hint: You can even pass in a lambda function to a composable. Be sure to use function type notation to specify what type of function should be passed in. In the following example, a WelcomeScreen() composable is defined and accepts two input parameters: a name string and an onStartClicked() function of type () -> Unit. That means that the function takes no inputs (the empty parentheses before the arrow) and has no return value ( the Unit following the arrow). Any function that matches that function type () -> Unit can be used to set the onClick handler of this Button. When the button is clicked, the onStartClicked() function is called.
+Вот еще одна подсказка: вы даже можете передать в composable лямбда-функцию. Обязательно используйте нотацию типа функции, чтобы указать, какой тип функции следует передать. В следующем примере определена композитная функция WelcomeScreen(), которая принимает два входных параметра: строку имени и функцию onStartClicked() типа () -> Unit. Это означает, что функция не принимает входных параметров (пустые круглые скобки перед стрелкой) и не имеет возвращаемого значения (единица после стрелки). Любая функция, соответствующая типу функции () -> Unit, может быть использована для установки обработчика onClick этой кнопки. Когда кнопка нажимается, вызывается функция onStartClicked().
 
 ```kt
 @Composable
@@ -369,31 +369,31 @@ fun WelcomeScreen(name: String, onStartClicked: () -> Unit) {
 }
 ```
 
-Passing in a lambda to a composable is a useful pattern because then the WelcomeScreen() composable can be reused in different scenarios. The user's name and the button's onClick behavior can be different each time because they're passed in as arguments.
+Передача лямбды в составной элемент - полезный паттерн, потому что в этом случае составной элемент WelcomeScreen() можно повторно использовать в различных сценариях. Имя пользователя и поведение кнопки onClick могут быть разными каждый раз, потому что они передаются в качестве аргументов.
 
-With this additional knowledge, go back to your code to add the remaining steps of making lemonade to your app.
+С этими дополнительными знаниями вернитесь к своему коду, чтобы добавить оставшиеся шаги по созданию лимонада в ваше приложение.
 
-Return to these instructions if you want additional guidance on how to add the custom logic around squeezing the lemon a random number of times.
+Вернитесь к этим инструкциям, если вам нужны дополнительные указания по добавлению пользовательской логики, связанной с выжиманием лимона случайное количество раз.
 
-## Add squeeze logic
-Great job! Now you have the basis of the app. Tapping the image should move you from one step to the next. It's time to add the behavior of needing to squeeze the lemon multiple times to make lemonade. The number of times that the user needs to squeeze, or tap, the lemon should be a random number between 2 to 4 (inclusive). This random number is different each time that the user picks a new lemon from the tree.
+## Добавьте логику выдавливания
+Отличная работа! Теперь у вас есть основа приложения. Нажатие на изображение должно переводить вас с одного шага на другой. Пришло время добавить поведение, при котором нужно выжать лимон несколько раз, чтобы сделать лимонад. Количество раз, которое пользователь должен выжать или коснуться лимона, должно быть случайным числом от 2 до 4 (включительно). Это случайное число будет меняться каждый раз, когда пользователь берет новый лимон с дерева.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/52b9b7321e689600_856.png)
 
-Here are some questions to guide your thought process:
+Вот несколько вопросов, которые помогут вам сориентироваться:
 
-How do you generate random numbers in Kotlin?
-At what point in your code should you generate the random number?
-How do you ensure that the user tapped the lemon the required number of times before moving to the next step?
-Do you need any variables stored with the remember composable so that the data doesn't get reset every time the screen is redrawn?
-When you're done implementing this change, run the app. Verify that it takes multiple taps of the image of the lemon to move to the next step, and that the number of taps required each time is a random number between 2 and 4. If a single tap of the lemon image displays the lemonade glass, go back to your code to figure out what's missing and try again.
+Как генерировать случайные числа в Kotlin?
+В какой точке кода вы должны генерировать случайное число?
+Как убедиться, что пользователь коснулся лимона необходимое количество раз, прежде чем перейти к следующему шагу?
+Нужны ли вам какие-либо переменные, хранящиеся в remember composable, чтобы данные не сбрасывались каждый раз, когда экран перерисовывается?
+Когда вы закончите внедрение этих изменений, запустите приложение. Убедитесь, что для перехода к следующему шагу требуется несколько касаний изображения лимона и что количество касаний каждый раз составляет случайное число от 2 до 4. Если при одном нажатии на изображение лимона на экране появляется стакан с лимонадом, вернитесь к коду, чтобы понять, чего не хватает, и попробуйте еще раз.
 
-Return to these instructions if you want additional guidance on how to finalize the app.
+Вернитесь к этим инструкциям, если вам нужны дополнительные указания по завершению работы над приложением.
 
-Finalize the app
-You're almost done! Add some last details to polish up the app.
+Завершение работы над приложением
+Вы почти закончили! Добавьте несколько последних деталей, чтобы отполировать приложение.
 
-As a reminder, here are the final screenshots of how the app looks:
+Напоминаем, что здесь представлены финальные скриншоты того, как выглядит приложение:
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/b2b0ae4400c0d06d_856.png)
 
@@ -403,12 +403,12 @@ As a reminder, here are the final screenshots of how the app looks:
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-button-click-practice-problem/img/e9442e201777352b_856.png)
 
-Vertically and horizontally center the text and images within the screen.
-Set the font size of the text to 18sp.
-Add 16dp of space between the text and image.
-Add a thin border of 2dp around the images with slightly rounded corners of 4dp. The border has an RGB color value of 105 for red, 205 for green, and 216 for blue. For examples of how to add a border, you can Google search it. Or you can refer to the documentation on Border.
-When you've completed these changes, run your app and then compare it with the final screenshots to ensure that they match.
+Выровняйте текст и изображения по вертикали и горизонтали в пределах экрана.
+Установите размер шрифта текста на 18sp.
+Добавьте 16 дп пространства между текстом и изображением.
+Добавьте тонкую рамку размером 2dp вокруг изображений со слегка закругленными углами размером 4dp. Граница имеет значение цвета RGB: 105 для красного, 205 для зеленого и 216 для синего. Примеры того, как добавить границу, вы можете найти в Google. Также вы можете обратиться к документации по Border.
+После завершения этих изменений запустите приложение и сравните его с финальными скриншотами, чтобы убедиться, что они совпадают.
 
-As part of good coding practices, go back and add comments to your code, so that anyone who reads your code can understand your thought process more easily. Remove any import statements at the top of your file that aren't used in your code. Ensure that your code follows the Kotlin style guide. All these efforts will help make your code more readable by other people and easier to maintain!
+Как часть хорошей практики кодирования, вернитесь назад и добавьте комментарии к коду, чтобы любому, кто прочитает ваш код, было легче понять ход ваших мыслей. Удалите все операторы импорта в верхней части файла, которые не используются в вашем коде. Убедитесь, что ваш код следует руководству по стилю Kotlin. Все эти усилия помогут сделать ваш код более читаемым для других людей и более простым в сопровождении!
 
-Well done! You did an amazing job implementing the Lemonade app! That was a challenging app with many parts to figure out. Now treat yourself to a refreshing glass of lemonade. Cheers!
+Молодцы! Вы проделали потрясающую работу по созданию приложения Lemonade! Это было сложное приложение, в котором нужно было разобраться со многими деталями. Теперь побалуйте себя бокалом освежающего лимонада. За ваше здоровье!
