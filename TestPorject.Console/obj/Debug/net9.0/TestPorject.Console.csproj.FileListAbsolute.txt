@@ -1,0 +1,15 @@
+E:\Репозитории\mdk0103\TestPorject.Console\bin\Debug\net9.0\TestPorject.Console.exe
+E:\Репозитории\mdk0103\TestPorject.Console\bin\Debug\net9.0\TestPorject.Console.deps.json
+E:\Репозитории\mdk0103\TestPorject.Console\bin\Debug\net9.0\TestPorject.Console.runtimeconfig.json
+E:\Репозитории\mdk0103\TestPorject.Console\bin\Debug\net9.0\TestPorject.Console.dll
+E:\Репозитории\mdk0103\TestPorject.Console\bin\Debug\net9.0\TestPorject.Console.pdb
+E:\Репозитории\mdk0103\TestPorject.Console\obj\Debug\net9.0\TestPorject.Console.GeneratedMSBuildEditorConfig.editorconfig
+E:\Репозитории\mdk0103\TestPorject.Console\obj\Debug\net9.0\TestPorject.Console.AssemblyInfoInputs.cache
+E:\Репозитории\mdk0103\TestPorject.Console\obj\Debug\net9.0\TestPorject.Console.AssemblyInfo.cs
+E:\Репозитории\mdk0103\TestPorject.Console\obj\Debug\net9.0\TestPorject.Console.csproj.CoreCompileInputs.cache
+E:\Репозитории\mdk0103\TestPorject.Console\obj\Debug\net9.0\TestPorject.Console.sourcelink.json
+E:\Репозитории\mdk0103\TestPorject.Console\obj\Debug\net9.0\TestPorject.Console.dll
+E:\Репозитории\mdk0103\TestPorject.Console\obj\Debug\net9.0\refint\TestPorject.Console.dll
+E:\Репозитории\mdk0103\TestPorject.Console\obj\Debug\net9.0\TestPorject.Console.pdb
+E:\Репозитории\mdk0103\TestPorject.Console\obj\Debug\net9.0\TestPorject.Console.genruntimeconfig.cache
+E:\Репозитории\mdk0103\TestPorject.Console\obj\Debug\net9.0\ref\TestPorject.Console.dll
