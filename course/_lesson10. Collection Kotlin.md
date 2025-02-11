@@ -26,7 +26,7 @@
 - Как использовать Map и MutableMap.
 
 ### Что вам понадобится
-IntelljIdea
+- IntellejIdea
 
 ### Массивы в Kotlin
 
