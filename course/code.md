@@ -237,3 +237,16 @@ fun auctionPrice(bid: Bid?, minimumPrice: Int): Int {
     return bid?.amount ?: minimumPrice
 }
 ```
+
+
+## Lesson15. ViewModel and State in Compose
+
+```
+$ git clone https://github.com/google-developer-training/basic-android-kotlin-compose-training-unscramble.git
+$ cd basic-android-kotlin-compose-training-unscramble
+$ git checkout viewmodel
+```
+
+## Lesson 17. Адаптация под разные размеры экранов
+
+https://github.com/google-developer-training/basic-android-kotlin-compose-training-reply-app
