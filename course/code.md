@@ -250,3 +250,14 @@ $ git checkout viewmodel
 ## Lesson 17. Адаптация под разные размеры экранов
 
 https://github.com/google-developer-training/basic-android-kotlin-compose-training-reply-app
+
+## Lesson 19. Корутины. Практика
+
+git clone https://github.com/google-developer-training/basic-android-kotlin-compose-training-race-tracker.git 
+cd basic-android-kotlin-compose-training-race-tracker
+
+## Lesson 20. Retrofit
+
+$ git clone https://github.com/google-developer-training/basic-android-kotlin-compose-training-mars-photos.git
+$ cd basic-android-kotlin-compose-training-mars-photos
+$ git checkout repo-starter
