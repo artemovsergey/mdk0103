@@ -309,6 +309,106 @@ No treats!
 
 - После параметра isTrick добавьте дополнительный параметр ExtraTreat типа (Int) -> String.
 
+``kt
+fun trickOrTreat(isTrick: Boolean, extraTreat: ((Int) -> String)?): () -> Unit {
+```
+
+В блоке else, перед оператором return, вызовите println(), передав в него вызов функции extraTreat(). В вызове функции extraTreat() передайте 5.
+
+``kt
+
+fun trickOrTreat(isTrick: Boolean, extraTreat: (Int) -> String): () -> Unit {
+    if (isTrick) {
+        возвращает трюк
+    } else {
+        println(extraTreat(5))
+        return treat
+    }
+}
+```
+
+Теперь при вызове функции trickOrTreat() вам нужно определить функцию с лямбда-выражением и передать ее для параметра extraTreat. В функции main()перед вызовом функции trickOrTreat() добавьте функцию coins(). Функция coins() присваивает параметру Int имя quantity и возвращает String. Вы можете заметить отсутствие ключевого слова return, которое не может быть использовано в лямбда-выражениях. Вместо этого возвращаемым значением становится результат последнего выражения в функции.
+
+``kt
+fun main() {
+    val coins: (Int) -> String = { quantity ->
+        «$quantity quarters»
+    }
+    
+    val treatFunction = trickOrTreat(false)
+    val trickFunction = trickOrTreat(true)
+    treatFunction()
+    trickFunction()
+}
+```
+
+После функции coins() добавьте функцию cupcake(), как показано на рисунке. Назовите параметр Int количеством и отделите его от тела функции с помощью оператора ->. Теперь в функцию trickOrTreat() можно передать либо функцию coins(), либо функцию cupcake().
+
+```kt
+fun main() {
+    val coins: (Int) -> String = { quantity ->
+        "$quantity quarters"
+    }
+
+    val cupcake: (Int) -> String = { quantity ->
+        "Have a cupcake!"
+    }
+
+    val treatFunction = trickOrTreat(false)
+    val trickFunction = trickOrTreat(true)
+    treatFunction()
+    trickFunction()
+}
+```
+
+В функции cupcake() удалите параметр количества и символ ->. Они не используются, поэтому их можно опустить.
+
+``kt
+val cupcake: (Int) -> String = {
+    «Съешьте кекс!»
+}
+```
+
+> Примечание: В функции coins() параметр Int назван количеством. Однако его можно назвать как угодно, лишь бы имя параметра и имя переменной в строке совпадали.
+
+
+Обновите вызовы функции trickOrTreat(). Для первого вызова, когда isTrick равно false, передайте функцию coins(). Для второго вызова, когда isTrick равно true, передайте функцию cupcake().
+
+```kt
+fun main() {
+    val coins: (Int) -> String = { quantity ->
+        "$quantity quarters"
+    }
+
+    val cupcake: (Int) -> String = {
+        "Have a cupcake!"
+    }
+
+    val treatFunction = trickOrTreat(false, coins)
+    val trickFunction = trickOrTreat(true, cupcake)
+    treatFunction()
+    trickFunction()
+}
+```
+
+Запустите свой код. Функция extraTreat() вызывается только в том случае, если параметр isTrick имеет значение false, поэтому на выходе получаем 5 четвертаков, но не кексы.
+
+``kt
+5 четвертаков
+Угощайтесь!
+Нет угощений
+```
+
+Нулевые типы функций
+Как и другие типы данных, типы функций могут быть объявлены как nullable. В этом случае переменная может содержать функцию или быть нулевой.
+
+Чтобы объявить функцию как nullable, окружите тип функции круглыми скобками, за которыми следует символ ? вне завершающей скобки. Например, если вы хотите сделать тип () -> String обнуляемым, объявите его как тип (() -> String)? Синтаксис istraTreat позволяет сделать параметр nullable, чтобы не создавать дополнительную функциюTreat() каждый раз, когда вы вызываете функцию trickOrTreat():
+ как показано на этом рисунке:
+
+![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d_856.png)
+
+- Измените тип параметра extraTreat на (() -> String)?
+
 ```kt
 fun trickOrTreat(isTrick: Boolean, extraTreat: ((Int) -> String)?): () -> Unit {
 ```
