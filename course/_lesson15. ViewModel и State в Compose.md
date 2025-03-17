@@ -518,7 +518,7 @@ private fun pickRandomWordAndShuffle(): String {
 
 Android Studio выдает ошибку из-за неопределенной переменной и функции.
 
-В GameViewModel добавьте следующее свойство после свойства currentWord, которое будет служить в качестве изменяемого набора для хранения используемых в игре слов.
+- В GameViewModel добавьте следующее свойство после свойства currentWord, которое будет служить в качестве изменяемого набора для хранения используемых в игре слов.
 
 ```kt
 // Set of words used in the game
@@ -620,7 +620,7 @@ fun GameScreen(
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-viewmodel-and-state/img/de93b81a92416c23_856.png)
 
-В функции GameScreen() добавьте новую переменную gameUiState. Используйте делегат ```by``` и вызовите функцию collectAsState() для uiState.
+- В функции GameScreen() добавьте новую переменную gameUiState. Используйте делегат ```by``` и вызовите функцию collectAsState() для uiState.
 
 Такой подход гарантирует, что при каждом изменении значения uiState произойдет перекомпозиция композиций, использующих значение gameUiState.
 
@@ -722,7 +722,7 @@ OutlinedTextField(
    ),
 ```
 
-- В составной функции GameLayout() добавьте еще два аргумента: лямбда onUserGuessChanged принимает аргумент String и ничего не возвращает, а onKeyboardDone ничего не принимает и не возвращает.
+- В составной функции ```GameLayout()``` добавьте еще два аргумента: лямбда onUserGuessChanged принимает аргумент String и ничего не возвращает, а onKeyboardDone ничего не принимает и не возвращает.
 
 ```kt
 @Composable
