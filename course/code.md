@@ -258,6 +258,31 @@ cd basic-android-kotlin-compose-training-race-tracker
 
 ## Lesson 20. Retrofit
 
+```
 $ git clone https://github.com/google-developer-training/basic-android-kotlin-compose-training-mars-photos.git
 $ cd basic-android-kotlin-compose-training-mars-photos
 $ git checkout repo-starter
+```
+
+## Практическая работа. Строим земноводных
+
+```
+https://github.com/google-developer-training/basic-android-kotlin-compose-training-amphibians
+```
+Название ветки: main
+
+
+## Практическая работа. Получение и отображение данных из интернета
+
+```
+$ git clone https://github.com/google-developer-training/basic-android-kotlin-compose-training-mars-photos.git
+```
+
+
+## Лекция: Загрузка и отображение данных из интернета
+
+```
+$ git clone https://github.com/google-developer-training/basic-android-kotlin-compose-training-mars-photos.git
+$ cd basic-android-kotlin-compose-training-mars-photos
+$ git checkout coil-starter
+```
