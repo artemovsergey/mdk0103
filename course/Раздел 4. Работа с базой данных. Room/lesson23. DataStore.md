@@ -12,14 +12,19 @@ Proto DataStore хранит пользовательские типы данн�
 
 Preferences DataStore - это отличный способ хранения настроек, контролируемых пользователем, и в этом мастер-классе вы узнаете, как реализовать DataStore для этого!
 
-Пререквизиты:
-Завершите курс «Основы Android с Compose», пройдя кодельную лабораторию «Чтение и обновление данных с Room».
-Что вам понадобится
-Компьютер с доступом в интернет и Android Studio
-Устройство или эмулятор
-Стартовый код для приложения Dessert Release
-Что вы будете создавать
-Приложение Dessert Release отображает список релизов Android. Иконка на панели приложения переключает макет между представлением сетки и представлением списка.
+### Что надо знать
+
+- Завершите курс «Основы Android с Compose», пройдя кодельную лабораторию «Чтение и обновление данных с Room».
+
+### Что вам понадобится
+
+- Компьютер с доступом в интернет и Android Studio
+- Устройство или эмулятор
+- Стартовый код для приложения Dessert Release
+
+### Что вы будете создавать
+
+- Приложение `Dessert Release` отображает список релизов Android. Иконка на панели приложения переключает макет между представлением сетки и представлением списка.
 
 <div style="display:flex">
     <div>
@@ -30,9 +35,9 @@ Preferences DataStore - это отличный способ хранения н
     </div>
 </div>
 
-В текущем состоянии приложение не сохраняет выбор макета. Когда вы закрываете приложение, выбор макета не сохраняется, и настройка возвращается к выбору по умолчанию. В этом кодовом примере вы добавляете DataStore в приложение Dessert Release и используете его для сохранения предпочтений выбора макета.
+В текущем состоянии приложение не сохраняет выбор макета. Когда вы закрываете приложение, выбор макета не сохраняется, и настройка возвращается к выбору по умолчанию. В этом кодовом примере вы добавляете DataStore в приложение `Dessert Release` и используете его для сохранения предпочтений выбора макета.
 
-# 2. Загрузите стартовый код
+### Загрузите стартовый код
 
 ```
 $ git clone https://github.com/google-developer-training/basic-android-kotlin-compose-training-dessert-release.git
@@ -74,7 +79,7 @@ DataStore хранит пары ключ-значение. Чтобы получ
 Создайте объект-компаньон внутри класса UserPreferencesRepository.
 Используйте функцию booleanPreferencesKey() для определения ключа и передайте ему имя is_linear_layout. По аналогии с именами таблиц SQL, ключ должен использовать формат подчеркивания. Этот ключ используется для доступа к булевому значению, указывающему, следует ли показывать линейный макет.
 
-``kt
+```kt
 class UserPreferencesRepository(
     private val dataStore: DataStore<Preferences>
 ){
@@ -101,7 +106,7 @@ suspend fun saveLayoutPreference(isLinearLayout: Boolean) {
 
 Чтобы сделать код более читабельным, определите имя для свойства MutablePreferences, указанного в теле лямбды. Используйте это свойство для установки значения с определенным вами ключом и булевым значением, переданным в функцию saveLayoutPreference().
 
-``kt
+```kt
 suspend fun saveLayoutPreference(isLinearLayout: Boolean) {
     dataStore.edit { preferences ->
         preferences[IS_LINEAR_LAYOUT] = isLinearLayout
@@ -117,13 +122,13 @@ suspend fun saveLayoutPreference(isLinearLayout: Boolean) {
 
 Создайте в UserPreferencesRepository свойство типа Flow<Boolean> под названием isLinearLayout.
 
-``kt
+```kt
 val isLinearLayout: Flow<Boolean> =
 ```
 
 Вы можете использовать свойство DataStore.data для отображения значений DataStore. Установите isLinearLayout в свойство data объекта DataStore.
 
-``kt
+```kt
 val isLinearLayout: Flow<Boolean> = dataStore.data
 ```
 
@@ -138,7 +143,7 @@ val isLinearLayout: Flow<Boolean> = dataStore.data
 
 > Примечание: Помните, что пока предпочтение не определено и не инициализировано, оно не существует в DataStore. Поэтому вы должны программно подтвердить, что предпочтение существует, и указать значение по умолчанию, если его нет.
 
-``kt
+```kt
 val isLinearLayout: Flow<Boolean> = dataStore.data.map { preferences ->
     preferences[IS_LINEAR_LAYOUT] ?: true
 }
@@ -149,7 +154,7 @@ val isLinearLayout: Flow<Boolean> = dataStore.data.map { preferences ->
 
 В объекте-компаньоне реализуйте неизменяемое свойство TAG string, которое будет использоваться для ведения журнала.
 
-``kt
+```kt
 private companion object {
     val IS_LINEAR_LAYOUT = booleanPreferencesKey(«is_linear_layout»)
     const val TAG = «UserPreferencesRepo»
@@ -168,7 +173,7 @@ val isLinearLayout: Flow<Boolean> = dataStore.data
 
 В блоке catch, если возникло IOexception, запишите ошибку в журнал и выдайте emptyPreferences(). Если возникло исключение другого типа, предпочтите повторное возникновение этого исключения. Выдавая emptyPreferences() в случае ошибки, функция map все равно может сопоставить значение по умолчанию.
 
-``kt
+```kt
 val isLinearLayout: Flow<Boolean> = dataStore.data
     .catch {
         if(it is IOException) {
@@ -189,7 +194,7 @@ val isLinearLayout: Flow<Boolean> = dataStore.data
 Найдите пакет dessertrelease.
 В этом каталоге создайте новый класс DessertReleaseApplication и реализуйте класс Application. Это контейнер для вашего DataStore.
 
-``kt
+```kt
 class DessertReleaseApplication: Application() {
 }
 ```
@@ -197,13 +202,13 @@ class DessertReleaseApplication: Application() {
 Внутри файла DessertReleaseApplication.kt, но вне класса DessertReleaseApplication, объявите приватную const val под названием LAYOUT_PREFERENCE_NAME.
 Присвойте переменной LAYOUT_PREFERENCE_NAME строковое значение layout_preferences, которое затем можно использовать в качестве имени хранилища данных предпочтений, которое вы инстанцируете на следующем шаге.
 
-``kt
+```kt
 private const val LAYOUT_PREFERENCE_NAME = «layout_preferences»
 ```
 
 Все еще вне тела класса DessertReleaseApplication, но в файле DessertReleaseApplication.kt, создайте частное свойство value типа DataStore<Preferences> под названием Context.dataStore, используя делегат preferencesDataStore. Передайте LAYOUT_PREFERENCE_NAME в качестве параметра name делегата preferencesDataStore.
 
-``kt
+```kt
 private const val LAYOUT_PREFERENCE_NAME = «layout_preferences»
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
     name = LAYOUT_PREFERENCE_NAME
@@ -212,7 +217,7 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
 
 Внутри тела класса DessertReleaseApplication создайте экземпляр lateinit var хранилища UserPreferencesRepository.
 
-``kt
+```kt
 private const val LAYOUT_PREFERENCE_NAME = «layout_preferences»
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
     name = LAYOUT_PREFERENCE_NAME
@@ -225,7 +230,7 @@ class DessertReleaseApplication: Application() {
 
 Переопределите метод onCreate().
 
-``kt
+```kt
 private const val LAYOUT_PREFERENCE_NAME = «layout_preferences»
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
     name = LAYOUT_PREFERENCE_NAME
@@ -320,7 +325,7 @@ class DessertReleaseViewModel(
 Отредактируйте функцию selectLayout() в DessertReleaseViewModel, чтобы получить доступ к хранилищу предпочтений и обновить предпочтение макета.
 Напомним, что запись в DataStore выполняется асинхронно с помощью функции suspend. Запустите новую корутину для вызова функции saveLayoutPreference() хранилища предпочтений.
 
-``kt
+```kt
 fun selectLayout(isLinearLayout: Boolean) {
     viewModelScope.launch {
         userPreferencesRepository.saveLayoutPreference(isLinearLayout)
@@ -340,7 +345,7 @@ val uiState: StateFlow<DessertReleaseUiState> =
 
 Установите StateFlow в результат преобразования коллекции map(), вызванного для потока isLinearLayout.
 
-``kt
+```kt
 val uiState: StateFlow<DessertReleaseUiState> =
     userPreferencesRepository.isLinearLayout.map { isLinearLayout ->
 }
@@ -348,7 +353,7 @@ val uiState: StateFlow<DessertReleaseUiState> =
 
 Возвращает экземпляр класса данных DessertReleaseUiState, передавая булево значение isLinearLayout. Экран использует это состояние пользовательского интерфейса для определения правильных строк и иконок для отображения.
 
-``kt
+```kt
 val uiState: StateFlow<DessertReleaseUiState> =
     userPreferencesRepository.isLinearLayout.map { isLinearLayout ->
         DessertReleaseUiState(isLinearLayout)
@@ -360,7 +365,7 @@ UserPreferencesRepository.isLinearLayout - это Flow, который явля�
 Используйте функцию stateIn(), чтобы преобразовать Flow в StateFlow.
 Функция stateIn() принимает три параметра: scope, started и initialValue. Для этих параметров передайте viewModelScope, SharingStarted.WhileSubscribed(5_000) и DessertReleaseUiState() соответственно.
 
-``kt
+```kt
 val uiState: StateFlow<DessertReleaseUiState> =
     userPreferencesRepository.isLinearLayout.map { isLinearLayout ->
         DessertReleaseUiState(isLinearLayout)
@@ -389,7 +394,7 @@ val uiState: StateFlow<DessertReleaseUiState> =
 
 Поздравляем! Вы успешно добавили Preferences DataStore в свое приложение, чтобы сохранить предпочтения пользователя в макете.
 
-# 7. Получение кода решения
+### Получение кода решения
 Чтобы загрузить код готового коделаба, вы можете использовать эти git-команды:
 
 ```

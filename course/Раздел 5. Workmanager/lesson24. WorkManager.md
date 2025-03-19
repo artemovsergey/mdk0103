@@ -3,28 +3,34 @@
 API WorkManager для Android упрощает фоновую работу. WorkManager может создавать задачи, которые можно запрашивать, повторно использовать и связывать в цепочку. WorkManager является рекомендуемым планировщиком задач на Android. В этом руководстве вы узнаете, как пользоваться WorkManager: создавать рабочих, использовать запросы на выполнение работы и объединять рабочих в цепочки в соответствии с потребностями вашего приложения.
 
 
-# 1. Прежде чем начать
-В этом руководстве рассказывается о WorkManager, совместимой с обратным развитием, гибкой и простой библиотеке для отложенной фоновой работы. WorkManager является рекомендуемым планировщиком задач на Android для отложенной работы с гарантией выполнения.
+### Прежде чем начать
 
-Необходимые условия
-Знание StateFlow и ViewModel. Если вы впервые знакомитесь с этими классами, ознакомьтесь с ViewModel и State в Compose Codelab (специально для ViewModel и State) или Read and update data with Room Codelab (специально для Flow и StateFlow).
-Знание репозиториев и инъекции зависимостей. Чтобы получить более подробную информацию, ознакомьтесь с Add repository и Manual DI.
-Уметь реализовывать корутины в своем приложении.
-Что вы узнаете
-Как добавить WorkManager в свой проект.
-Как запланировать простую задачу.
-Как настраивать входные и выходные параметры для рабочих.
-Как объединять рабочих в цепочку.
-Что вы будете делать
-Измените стартовое приложение для использования WorkManager.
-Реализуйте рабочий запрос на размытие изображения.
-Реализуйте последовательную группу работ, соединив их в цепочку.
-Передавать данные в запланированную работу и из нее.
-Что вам понадобится
-Последняя стабильная версия Android Studio
-подключение к интернету
+В этом руководстве рассказывается о `WorkManager`, совместимой с обратным развитием, гибкой и простой библиотеке для отложенной фоновой работы. WorkManager является рекомендуемым планировщиком задач на Android для отложенной работы с гарантией выполнения.
 
-# 2. Обзор приложения
+### Необходимые условия
+- Знание StateFlow и ViewModel. Если вы впервые знакомитесь с этими классами, ознакомьтесь с ViewModel и State в Compose Codelab (специально для ViewModel и State) или Read and update data with Room Codelab (специально для Flow и StateFlow).
+- Знание репозиториев и инъекции зависимостей. Чтобы получить более подробную информацию, ознакомьтесь с Add repository и Manual DI.
+
+- Уметь реализовывать корутины в своем приложении.
+
+### Что вы узнаете
+
+- Как добавить WorkManager в свой проект.
+- Как запланировать простую задачу.
+- Как настраивать входные и выходные параметры для рабочих.
+- Как объединять рабочих в цепочку.
+
+### Что вы будете делать
+- Измените стартовое приложение для использования WorkManager.
+- Реализуйте рабочий запрос на размытие изображения.
+- Реализуйте последовательную группу работ, соединив их в цепочку.
+- Передавать данные в запланированную работу и из нее.
+
+### Что вам понадобится
+- Последняя стабильная версия Android Studio
+- Подключение к интернету
+
+### Обзор приложения
 В наши дни смартфоны почти слишком хорошо умеют делать снимки. Прошли те времена, когда фотограф мог сделать достоверно размытый снимок чего-то загадочного.
 
 В этом коделабе вы будете работать над Blur-O-Matic, приложением, которое размывает фотографии и сохраняет результаты в файл. Что это было - Лохнесское чудовище или игрушечная подводная лодка? С Blur-O-Matic никто никогда не узнает!
@@ -146,7 +152,7 @@ WorkManager: Этот класс фактически планирует ваш 
 Щелкните правой кнопкой мыши на пакете com.example.bluromatic.workers в панели проекта Android и выберите New -> Kotlin Class/File.
 Назовите новый Kotlin-класс BlurWorker. Расширьте его из CoroutineWorker, добавив необходимые параметры конструктора.
 workers/BlurWorker.kt
-``kt
+```kt
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import android.content.Context
@@ -182,7 +188,7 @@ class BlurWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ctx, 
 Непосредственно перед объявлением класса создайте переменную с именем TAG и присвойте ей значение BlurWorker. Обратите внимание, что эта переменная не связана конкретно с методом doWork(), но вы используете ее позже в вызовах Log().
 
 workers/BlurWorker.kt
-``kt
+```kt
 private const val TAG = «BlurWorker»
 
 class BlurWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ctx, params) {
@@ -208,7 +214,7 @@ override suspend fun doWork(): Result {
 Добавьте блок кода try...catch с возвратом, в котором выполняется фактическая работа с размытием изображения.
 workers/BlurWorker.kt
 
-``kt
+```kt
 ...
         makeStatusNotification(
             applicationContext.resources.getString(R.string.blurring_image),
@@ -224,13 +230,13 @@ workers/BlurWorker.kt
 В блоке try добавьте вызов Result.success().
 В блоке catch добавьте вызов Result.failure().
 
-``kt
+```kt
 Примечание: WorkManager использует Result.success() и Result.failure() для указания окончательного статуса выполняемого рабочего запроса.
 ```
 
 workers/BlurWorker.kt
 
-``kt
+```kt
 ...
         makeStatusNotification(
             applicationContext.resources.getString(R.string.blurring_image),
@@ -266,7 +272,7 @@ workers/BlurWorker.kt
 > Примечание: В последующих инструкциях вы будете передавать переменную для параметра blurLevel.
 
 workers/BlurWorker.kt
-``kt
+```kt
 ...
             val picture = BitmapFactory.decodeResource(
                 applicationContext.resources,
@@ -297,7 +303,7 @@ workers/BlurWorker.kt
 Добавьте код для отображения уведомления пользователю, содержащего переменную outputUri.
 
 workers/BlurWorker.kt
-``kt
+```kt
 ...
             val outputUri = writeBitmapToFile(applicationContext, output)
 
@@ -313,7 +319,7 @@ workers/BlurWorker.kt
 В блоке catch запишите сообщение об ошибке, указывающее на то, что при попытке размыть изображение произошла ошибка. В вызов Log.e() передается ранее определенная переменная TAG, соответствующее сообщение и возникающее исключение.
 
 workers/BlurWorker.kt
-``kt
+```kt
 ...
         } catch (throwable: Throwable) {
             Log.e(
@@ -332,7 +338,7 @@ CoroutineWorker по умолчанию запускается как Dispatcher
 Внутри вызова withContext() передайте Dispatchers.IO, чтобы лямбда-функция выполнялась в специальном пуле потоков для потенциально блокирующих операций ввода-вывода.
 Переместите ранее написанный код return try...catch в этот блок.
 
-``kt
+```kt
 ...
         return withContext(Dispatchers.IO) {
 
@@ -351,7 +357,7 @@ Android Studio выдает следующую ошибку, поскольку 
 
 Эту ошибку можно исправить, добавив метку, как показано во всплывающем окне.
 
-``kt
+```kt
 ...
             //return try {
             return@withContext try {
@@ -383,7 +389,7 @@ import kotlinx.coroutines.delay
 В файле data/WorkManagerBluromaticRepository.kt, внутри класса WorkManagerBluromaticRepository, создайте приватную переменную workManager и сохраните в ней экземпляр WorkManager, вызвав WorkManager.getInstance(context).
 
 data/WorkManagerBluromaticRepository.kt
-``kt
+```kt
 import androidx.work.WorkManager
 ...
 class WorkManagerBluromaticRepository(context: Context) : BluromaticRepository {
@@ -407,7 +413,7 @@ OneTimeWorkRequest: Рабочий запрос, который выполняе
 Заполните новую переменную с именем blurBuilder, создав OneTimeWorkRequest для рабочего размытия и вызвав функцию расширения OneTimeWorkRequestBuilder из WorkManager KTX.
 
 data/WorkManagerBluromaticRepository.kt
-``kt
+```kt
 import com.example.bluromatic.workers.BlurWorker
 import androidx.work.OneTimeWorkRequestBuilder
 ...
@@ -420,7 +426,7 @@ override fun applyBlur(blurLevel: Int) {
 Запустите работу, вызвав метод enqueue() на вашем объекте WorkManager.
 
 data/WorkManagerBluromaticRepository.kt
-``kt
+```kt
 import com.example.bluromatic.workers.BlurWorker
 import androidx.work.OneTimeWorkRequestBuilder
 ...
@@ -466,7 +472,7 @@ override fun applyBlur(blurLevel: Int) {
 Заполните переменную URI изображения, вызвав контекстный метод getImageUri().
 
 data/WorkManagerBluromaticRepository.kt
-``kt
+```kt
 import com.example.bluromatic.getImageUri
 ...
 class WorkManagerBluromaticRepository(context: Context) : BluromaticRepository {
@@ -479,7 +485,7 @@ class WorkManagerBluromaticRepository(context: Context) : BluromaticRepository {
 Код приложения содержит вспомогательную функцию createInputDataForWorkRequest() для создания объектов входных данных.
 
 data/WorkManagerBluromaticRepository.kt
-``kt
+```kt
 // Для справки - уже существует в приложении
 private fun createInputDataForWorkRequest(blurLevel: Int, imageUri: Uri): Data {
     val builder = Data.Builder()
@@ -493,7 +499,7 @@ private fun createInputDataForWorkRequest(blurLevel: Int, imageUri: Uri): Data {
 Чтобы установить объект входных данных для WorkRequest, вы вызываете метод blurBuilder.setInputData(). Вы можете создать и передать объект данных за один шаг, вызвав в качестве аргумента вспомогательную функцию createInputDataForWorkRequest(). Для вызова функции createInputDataForWorkRequest() передайте переменную blurLevel и переменную imageUri.
 
 data/WorkManagerBluromaticRepository.kt
-``kt
+```kt
 override fun applyBlur(blurLevel: Int) {
      // Создаем рабочий запрос на размытие изображения
     val blurBuilder = OneTimeWorkRequestBuilder<BlurWorker>()
@@ -516,7 +522,7 @@ val resourceUri = inputData.getString(KEY_IMAGE_URI)
 Создайте новую переменную с именем blurLevel. Заполните переменную, вызвав inputData.getInt() и передав в нее константу BLUR_LEVEL, которая использовалась в качестве ключа при создании объекта входных данных. В случае если эта пара ключ/значение не была создана, укажите значение по умолчанию 1 (один).
 
 workers/BlurWorker.kt
-``kt
+```kt
 import com.example.bluromatic.KEY_BLUR_LEVEL
 import com.example.bluromatic.KEY_IMAGE_URI
 ...
@@ -551,7 +557,7 @@ return@withContext try {
 Добавьте объект contentResolver к значению applicationContext.
 
 workers/BlurWorker.kt
-``kt
+```kt
 ...
     require(!resourceUri.isNullOrBlank()) {
         // ...
@@ -596,7 +602,7 @@ val output = blurBitmap(picture, blurLevel)
 Заполните эту переменную вызовом функции workDataOf(), используя константу KEY_IMAGE_URI в качестве ключа и переменную outputUri в качестве значения. Функция workDataOf() создает объект Data из переданной пары ключа и значения.
 
 workers/BlurWorker.kt
-``kt
+```kt
 import androidx.work.workDataOf
 // ...
 val outputData = workDataOf(KEY_IMAGE_URI to outputUri.toString())
@@ -605,7 +611,7 @@ val outputData = workDataOf(KEY_IMAGE_URI to outputUri.toString())
 Обновите код Result.success(), чтобы принять этот новый объект Data в качестве аргумента.
 
 workers/BlurWorker.kt
-``kt
+```kt
 //Result.success()
 Result.success(outputData)
 ```
@@ -613,7 +619,7 @@ Result.success(outputData)
 Удалите код, отображающий уведомление, поскольку он больше не нужен, так как объект выходных данных теперь использует URI.
 
 workers/BlurWorker.kt
-``kt
+```kt
 //УДАЛИТЕ следующий код уведомления.
 //makeStatusNotification(
 // «Output is $outputUri»,
@@ -847,7 +853,7 @@ import com.example.bluromatic.workers.CleanupWorker
 Добавьте следующий рабочий запрос в цепочку, вызвав метод .then().
 
 data/WorkManagerBluromaticRepository.kt
-``kt
+```kt
 ...
 //workManager.enqueue(blurBuilder.build())
 
@@ -859,7 +865,7 @@ continuation = continuation.then(blurBuilder.build())
 Создайте рабочий запрос для сохранения изображения и добавьте его в цепочку.
 
 data/WorkManagerBluromaticRepository.kt
-``kt
+```kt
 import com.example.bluromatic.workers.SaveImageToFileWorker
 
 ...
@@ -875,7 +881,7 @@ continuation = continuation.then(save)
 Чтобы начать работу, вызовите метод enqueue() на объекте continuation.
 
 data/WorkManagerBluromaticRepository.kt
-``kt
+```kt
 ...
 continuation = continuation.then(save)
 
@@ -901,7 +907,7 @@ continuation.enqueue()
 
 Великолепная работа! Теперь вы можете очистить временные файлы, размыть изображение и сохранить его!
 
-# 12. Получите код решения
+### Получите код решения
 Чтобы загрузить код готового коделаба, вы можете воспользоваться следующими командами:
 
 ```
@@ -910,13 +916,12 @@ $ cd basic-android-kotlin-compose-training-workmanager
 $ git checkout intermediate
 ```
 
-# 13. Заключение
-Поздравляем! Вы закончили работу над приложением Blur-O-Matic и в процессе работы узнали о:
+### Заключение
 
-Добавление WorkManager в ваш проект
-Планирование одноразового рабочего запроса
-Входные и выходные параметры
-Объединение рабочих запросов в цепочку
-WorkManager поддерживает гораздо больше, чем мы смогли рассмотреть в этом коделабе, включая повторяющуюся работу, библиотеку поддержки тестирования, параллельные рабочие запросы и объединение входов.
+Вы закончили работу над приложением Blur-O-Matic и в процессе работы узнали о:
 
-Чтобы узнать больше, перейдите к документации по планированию задач с помощью WorkManager.
+- Добавление WorkManager в ваш проект
+- Планирование одноразового рабочего запроса
+- Входные и выходные параметры
+- Объединение рабочих запросов в цепочку
+- WorkManager поддерживает гораздо больше, чем мы смогли рассмотреть в этом коделабе, включая повторяющуюся работу, библиотеку поддержки тестирования, параллельные рабочие запросы и объединение входов.

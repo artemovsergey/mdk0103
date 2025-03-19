@@ -30,8 +30,7 @@
 
 ### Обзор приложения
 
-В практической работе Material Theming with Jetpack Compose вы создали приложение Woof с использованием Material Design, которое отображает список собак и информацию о них.
-
+В практической работе Material Theming with Jetpack Compose вы создали приложение `Woof` с использованием Material Design, которое отображает список собак и информацию о них.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-woof-animation/img/36c6cabd93421a92_856.png)
 
@@ -684,10 +683,10 @@ fun DogItem(
        ) {...}
 }
 ```
+
 - Посмотрите, как меняется цвет при расширении элемента списка. Элементы списка без расширения имеют цвет primaryContainer, а элементы списка с расширением - цвет tertiaryContainer.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-woof-animation/img/b45e86eb53fd7d88_856.png)
-
 
 ### Заключение
 
