@@ -1,92 +1,111 @@
-# Create and use variables in Kotlin
+# Создание и использование переменных в Kotlin
 
-# 1. Before you begin
-In the apps that you use on your phone, notice that some parts of the app stay the same, while other parts change (or are variable).
+# Прежде чем начать
 
-For example, the names of the categories within the Settings app stay the same – Network & internet, Connected devices, Apps, and more.
+В приложениях, которые вы используете на своем телефоне, обратите внимание, что некоторые части приложения остаются неизменными, а другие меняются (или являются переменными).
+
+Например, названия категорий в приложении «Настройки» остаются неизменными - «Сеть и интернет», «Подключенные устройства», «Приложения» и другие.
+
+<img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/72302735e50d7d85_856.png" width="400">
+
+С другой стороны, если вы посмотрите на новостное приложение, статьи будут часто меняться. Меняются название статьи, источник, время публикации и изображения.
+
+Как написать код так, чтобы контент менялся со временем? Вы не можете переписывать код в своем приложении каждый раз, когда появляются новые статьи, а это происходит каждый день, каждый час и каждую минуту!
+
+На этом занятии вы узнаете, как написать код с использованием переменных, чтобы определенные части вашей программы могли меняться без необходимости писать новый набор инструкций.
+
+# Что вы будете создавать
+- Короткие программы на Kotlin, использующие переменные.
+
+## Что вы узнаете
+- Как определить переменную и обновить ее значение.
+- Как выбрать подходящий тип данных для переменной из основных типов данных в Kotlin.
+- Как добавлять комментарии к своему коду.
+
+# Что вам понадобится
+- Компьютер с доступом в Интернет и веб-браузер.
 
 
-<img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/72302735e50d7d85_856.png" width="200">
+# Переменные и типы данных
 
-On the other hand, if you look at a news app, the articles will change often. The article name, source, time posted, and images change.
+В компьютерном программировании существует понятие переменной, которая представляет собой контейнер для одной части данных. Вы можете представить ее в виде ячейки, содержащей значение. У ячейки есть метка, которая является именем переменной. Обращаясь к ящику по его имени, вы получаете доступ к значению, которое в нем хранится.
 
-How do you write your code so that content changes over time? You can't rewrite the code in your app every time there are new articles to post, which happens every day, every hour, and every minute!
-
-In this codelab, you learn how to write code that uses variables so that certain parts of your program can change without having to write a whole new set of instructions. You will use the Kotlin Playground as you did in the previous codelab.
-
-# What you'll build
-Short programs in Kotlin that use variables.
-What you'll learn
-How to define a variable and update its value.
-How to select an appropriate data type for a variable from the basic data types in Kotlin.
-How to add comments to your code.
-
-# What you'll need
-A computer with internet access and a web browser.
-
-
-# Variables and data types
-
-In computer programming, there's the concept of a variable, which is a container for a single piece of data. You can envision it as a box that contains a value. The box has a label, which is the name of the variable. By referring to the box by its name, you have access to the value it holds.
 
 <img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/3284dfd6d8e70a60_856.png" width="200">
 
-Why store the value in a box and reference the box by its name when you can simply use the value directly? The problem is that when your code uses values directly in all the instructions, your program will only work for that specific case.
+# Переменные и типы данных
 
-Here's an analogy that can make it easier to understand why variables are useful. The following is a letter for someone you recently met.
+В компьютерном программировании существует понятие переменной, которая представляет собой контейнер для одной части данных. Вы можете представить ее в виде ячейки, содержащей значение. У ячейки есть метка, которая является именем переменной. Обращаясь к ячейке по ее имени, вы получаете ее значение.
 
-Dear Lauren,
+Зачем хранить значение в ячейке и обращаться к ней по ее имени, если можно просто использовать значение напрямую? Проблема в том, что если в вашем коде во всех инструкциях используются значения напрямую, то ваша программа будет работать только в этом конкретном случае.
 
-It was great meeting you today at the office. I look forward to seeing you on Friday.
+Вот аналогия, которая поможет понять, почему переменные полезны. Ниже приведено письмо для человека, с которым вы недавно познакомились.
 
-Have a nice day!
+```
+Дорогая Лорен,
 
-This letter is great, but it only works for your specific situation with Lauren. What if you find yourself writing the same letter many times but with slight variations for different people? It would be more efficient to create a single letter template, leaving blanks for the parts that can change.
+Было приятно встретить тебя сегодня в офисе. С нетерпением жду встречи с тобой в пятницу.
 
-Dear ____ ,
+Хорошего дня!
+```
 
-It was great meeting you today at _____. I look forward to seeing you on ____ .
+Это письмо замечательное, но оно подходит только для вашей конкретной ситуации с Лорен. А что, если вам приходится писать одно и то же письмо много раз, но с небольшими вариациями для разных людей? Эффективнее было бы создать единый шаблон письма, оставив пустые места для тех частей, которые могут меняться.
 
-Have a nice day!
+```
+Дорогой ____ ,
 
-You can also specify the type of information that goes in each blank space. This ensures that the letter template will be used as you expected.
+Было приятно встретиться с вами сегодня на _____. С нетерпением жду встречи с вами на ____ .
 
-Dear { name } ,
+Хорошего дня!
+```
 
-It was great meeting you today at { location } . I look forward to seeing you on { date } .
+Вы также можете указать тип информации, которая будет размещена в каждом пустом месте. Это гарантирует, что шаблон письма будет использован так, как вы ожидали.
 
-Have a nice day!
+```
+Уважаемый { имя } ,
 
-Conceptually, building an app is similar. You have placeholders for some data, while other parts of the app stay the same.
+Было приятно встретиться с вами сегодня в { место } . С нетерпением жду встречи с вами в { дата } .
 
-<img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/df27215a9b673eb6_856.png" width="200">
+Хорошего дня!
+```
 
-In the above illustration of a news app, the "Welcome" text, the "Latest news for you" heading, and the "View more articles" button text always stay the same. Conversely, the name of the user and the contents of each article will change, so that would be a great opportunity to use variables to hold each piece of information.
+Концептуально создание приложения похоже. У вас есть держатели для некоторых данных, в то время как другие части приложения остаются неизменными.
+
+
+<img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/df27215a9b673eb6_856.png" width="400">
+
+На приведенной выше иллюстрации новостного приложения текст «Добро пожаловать», заголовок «Последние новости для вас» и текст кнопки «Просмотреть больше статей» всегда остаются неизменными. Напротив, имя пользователя и содержание каждой статьи будут меняться, так что это отличная возможность использовать переменные для хранения каждой части информации.
+
 
 <img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/ce8ced6770622864_856.png" width="400">
 
 
-You don't want to write the code (or instructions) in your news app to only work for a user named Alex, or for a news article that always has the same title and publication date. Instead, you want a more flexible app, so you should write your code by referencing variable names like name, article1Name, article1Date, and so on. Then your code becomes general enough to work for many different use cases where the user's name could be different and the article details could be different.
+Вы же не хотите, чтобы код (или инструкции) вашего новостного приложения работал только для пользователя по имени Алекс или для новостной статьи, которая всегда имеет один и тот же заголовок и дату публикации. Вместо этого вы хотите создать более гибкое приложение, поэтому вам следует писать код, ссылаясь на такие имена переменных, как `name`, `article1Name`, `article1Date` и так далее. Тогда ваш код станет достаточно общим, чтобы работать во многих различных случаях, когда имя пользователя может быть другим, а детали статьи - другими.
 
-Example app with variables
-Let's look at an app example to see where it may use variables.
+#### Пример приложения с переменными
 
-<img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/a7e1f5184e4e3b15_856.png" width="200">
+Давайте рассмотрим пример приложения, чтобы увидеть, где в нем могут использоваться переменные.
 
 
-In a maps app, you may find a details screen for each location, such as a restaurant or business. The above screenshot from the Google Maps app shows the details for Google's company headquarters, which is called the Googleplex. Which pieces of data do you think are stored as variables in the app?
+<img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/a7e1f5184e4e3b15_856.png" width="400">
 
-Name of the location
-Star rating of the location
-Number of reviews of the location
-Whether the user saved (or bookmarked) this location
-Address of the location
-Change the data that's stored in these variables and you have a maps app that's flexible enough to display the details of other locations too.
 
-# Data types
-When you decide what aspects of your app can be variable, it's important to specify what type of data can be stored in those variables. In Kotlin, there are some common basic data types. The table below shows a different data type in each row. For each data type, there's a description of what kind of data it can hold and example values.
+В приложении карт вы можете найти экран с подробной информацией о каждом месте, например о ресторане или предприятии. На приведенном выше скриншоте из приложения `Google Maps` показана информация о штаб-квартире компании Google, которая называется Googleplex. Как вы думаете, какие части данных хранятся в приложении в виде переменных?
 
-|Kotlin data type|What kind of data it can contain|Example literal values|
+- Название места
+- Звездный рейтинг места
+- Количество отзывов о месте
+- Сохранил ли пользователь это место (или сделал закладку)
+- Адрес места
+
+Измените данные, хранящиеся в этих переменных, и вы получите приложение для карт, достаточно гибкое, чтобы отображать информацию и о других местах.
+
+# Типы данных
+
+Когда вы решаете, какие аспекты вашего приложения могут быть переменными, важно указать, какой тип данных может храниться в этих переменных. В Kotlin есть несколько общих базовых типов данных. В таблице ниже в каждой строке указан свой тип данных. Для каждого типа данных есть описание того, какие данные он может хранить, и примеры значений.
+
+
+|Тип данных Kotlin|Какие данные он может содержать|Примеры буквенных значений|
 |:---------------|:---------------|:------|
 |String|Text|"Add contact","Search","Sign in"|
 |Int|Integer number|32, 1293490, -59281|
@@ -94,84 +113,75 @@ When you decide what aspects of your app can be variable, it's important to spec
 |Float|Decimal number (that is less precise than a Double). Has an f or F at the end of the number.|5.0f, -1630.209f, 1.2940278F|
 |Boolean|true or false. Use this data type when there are only two possible values. Note that true and false are keywords in Kotlin.|true, false|
 
-> Note: For the valid ranges for the numerical data types (Int, Double, and Float), see Numbers. For specifics on the difference between Double and Float, look at this table comparing the two data types.
+Теперь, когда вы знаете о некоторых распространенных типах данных Kotlin, какой тип данных подойдет для каждой из переменных, указанных на странице детализации местоположения, которую вы видели ранее?
 
-Now that you are aware of some common Kotlin data types, which data type would be appropriate for each of the variables identified in the location detail page you saw earlier?
+<img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/a7e1f5184e4e3b15_856.png" width="400">
 
-<img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/a7e1f5184e4e3b15_856.png" width="200">
+- Название места - это текст, поэтому его можно хранить в переменной, тип данных которой - String.
+- Звездный рейтинг места - десятичное число (например, 4,2 звезды), поэтому его можно хранить как Double.
+- Количество отзывов о локации - целое число, поэтому его следует хранить как Int.
+- Сохранил ли пользователь это место, имеет только два возможных значения (сохранено или не сохранено), поэтому хранится как Boolean, где true и false могут представлять каждое из этих состояний.
+- Адрес местоположения - это текст, поэтому он должен быть строкой.
 
-- Name of the location is text, so it can be stored in a variable whose data type is String.
-- Star rating of the location is a decimal number (such as 4.2 stars), so it can be stored as a Double.
-- Number of reviews of the location is a whole number, so it should be stored as an Int.
-- Whether the user saved this location only has two possible values (saved or not saved), so it's stored as a Boolean, where true and false can represent each of those states.
-- Address of the location is text, so it should be a String.
+Потренируйтесь на двух других сценариях ниже. Определите, как используются переменные и их типы данных в следующих приложениях.
 
-Practice on two more scenarios below. Identify the use of variables and their data types in the following apps.
+В приложении для просмотра видео, например в приложении YouTube, есть экран подробностей видео. Где могут использоваться переменные? Каков тип данных этих переменных?
 
-In an app for watching videos, such as the YouTube app, there's a video details screen. Where are variables likely used? What's the data type of those variables?
+<img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/a1688b9b297c7501_856.png" width="400">
 
-<img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/a1688b9b297c7501_856.png" width="200">
+Единого правильного ответа нет, но в приложении для просмотра видео переменные могут использоваться для следующих данных:
 
-There isn't a single correct answer, but in a video-watching app, variables can be used for the following pieces of data:
+- Название видео (String)
+- Название канала (String)
+- Количество просмотров видео (Int)
+- Количество лайков на видео (Int)
+- Количество комментариев к видео (Int)
 
-- Name of the video (String)
-- Name of the channel (String)
-- Number of views on the video (Int)
-- Number of likes on the video (Int)
-- Number of comments on the video (Int)
-
-In an app like Messages, the screen lists the most recent text messages received. Where are variables likely used? What's the data type of those variables?
+В таком приложении, как Messages, на экране отображается список последних полученных текстовых сообщений. Где могут использоваться переменные? Каков тип данных этих переменных?
 
 <img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/f515a6481cc91bf2_856.png" width="200">
 
-Again, there isn't a single correct answer. In an text messaging app, variables can be used for the following pieces of data:
+И здесь нет единственно верного ответа. В приложении для обмена текстовыми сообщениями переменные могут использоваться для следующих данных:
 
-Phone number of the sender (String)
-Timestamp of the message (String)
-Preview of the message contents (String)
-Whether the text message is unread (Boolean)
+Номер телефона отправителя (Строка)
+Временная метка сообщения (Строка)
+Предварительный просмотр содержимого сообщения (Строка)
+Является ли сообщение непрочитанным (булево).
 
-## Try it
+# Определение и использование переменных
 
-Open your favorite app on your phone.
-Identify where you think variables are used in the app on that particular screen.
-Guess what data type those variables are.
-Share your answers on social media with a screenshot of the app, an explanation of where you think variables are used, and the hashtag #AndroidBasics.
-Great work in this codelab so far! Move onto the next section to learn more about how variables and data types are used in your code.
+Прежде чем использовать переменную, ее нужно сначала определить в коде.
 
-# 3. Define and use variables
-Define versus use a variable
-You must define a variable first in your code before you can use the variable. This is similar to what you learned in the last codelab about defining functions before calling them.
+Когда вы определяете переменную, вы присваиваете ей имя, чтобы однозначно идентифицировать ее. Вы также решаете, какой тип данных она может хранить, указывая тип данных. Наконец, вы можете указать начальное значение, которое будет храниться в переменной, но это необязательно.
 
-When you define a variable, you assign a name to uniquely identify it. You also decide what type of data it can hold by specifying the data type. Lastly, you can provide an initial value that will be stored in the variable, but this is optional.
+> Примечание: Вы можете услышать альтернативную фразу «объявить переменную». Слова `declare` и `define` могут использоваться как взаимозаменяемые и имеют одинаковое значение. Вы также можете услышать термин «определение переменной» или «объявление переменной», которые относятся к коду, определяющему переменную. В других языках `declare` и `define` имеют разные значения.
 
-> Note: You may hear the alternate phrase "declare a variable." The words declare and define can be used interchangeably and have the same meaning. You may also hear the term "variable definition" or "variable declaration", which refer to the code that defines a variable. In other languages, declare and define have different meanings.
+Определив переменную, вы можете использовать ее в своей программе. Чтобы использовать переменную, напечатайте ее имя в коде, что скажет компилятору Kotlin, что вы хотите использовать значение переменной в данной точке кода.
 
-Once you define a variable, you can use that variable in your program. To use a variable, type out the variable name in your code, which tells the Kotlin compiler that you want to use the variable's value at that point in the code.
-
-For example, define a variable for the number of unread messages in a user's inbox. The variable can have the name count. Store a value such as the number 2 inside the variable, representing 2 unread messages in the user's inbox. (You can pick a different number to store in the variable, but for the purpose of this example, use the number 2.)
+Например, определите переменную для количества непрочитанных сообщений в папке входящих сообщений пользователя. Переменная может иметь имя `count`. Сохраните в переменной значение, например, число 2, обозначающее 2 непрочитанных сообщения в папке «Входящие» пользователя. (Вы можете выбрать другое число для хранения в переменной, но для целей этого примера используйте число 2).
 
 <img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/2e4abc418a62b510_856.png" width="200">
 
-Every time your code needs to access the number of unread messages, type count in your code. When executing your instructions, the Kotlin compiler sees the variable name in your code and uses the variable value in its place.
+Каждый раз, когда вашему коду нужно получить доступ к количеству непрочитанных сообщений, введите в код `count`. При выполнении ваших инструкций компилятор Kotlin видит имя переменной в вашем коде и использует вместо него значение переменной.
 
-Technically, there are more specific vocabulary words to describe this process:
+Технически для описания этого процесса существуют более конкретные словарные слова:
 
-An expression is a small unit of code that evaluates to a value. An expression can be made up of variables, function calls, and more. In the following case, the expression is made up of one variable: the count variable. This expression evaluates to 2.
+**Выражение** - это небольшая единица кода, которая оценивается в значение. Выражение может состоять из переменных, вызовов функций и многого другого. В следующем примере выражение состоит из одной переменной: переменной `count`. Это выражение оценивается в 2.
 
 <img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/e399b1ba43c613c9_856.png" width="400">
 
-Evaluate means determining the value of an expression. In this case, the expression evaluates to 2. The compiler evaluates expressions in the code and uses those values when executing the instructions in the program.
+Evaluate означает определение значения выражения. В данном случае выражение оценивается в 2. Компилятор оценивает выражения в коде и использует эти значения при выполнении инструкций в программе.
 
 <img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/24ccc51828dbb8c8_856.png" width="400">
 
-To observe this behavior in the Kotlin Playground, run the program in the next section.
+Чтобы понаблюдать за этим поведением в Idea, запустите программу из следующего раздела.
 
-**Example**
+**Пример**
 
-Open the Kotlin Playground in a web browser.
-Replace the existing code in the Kotlin Playground with the following program.
-This program creates a variable called count with an initial value of 2 and uses it by printing out the value of the count variable to the output. Don't worry if you don't understand all aspects of the code syntax yet. It will be explained in more detail in upcoming sections.
+- Откройте Idea.
+- Замените существующий код в Kotlin Playground следующей программой.
+
+Эта программа создает переменную count с начальным значением 2 и использует ее, распечатывая значение переменной count на выходе. Не волнуйтесь, если вы пока не понимаете всех аспектов синтаксиса кода. Более подробно он будет рассмотрен в последующих разделах.
 
 ```kt
 fun main() {
@@ -180,96 +190,100 @@ fun main() {
 }
 ```
 
-- Run the program and the output should be:
+- Запустите программу, и на выходе должно получиться следующее:
 
 ```
 2
 ```
 
-## Variable declaration
-In the program you ran, the second line of code says:
+## Объявление переменной
+В программе, которую вы запустили, вторая строка кода гласит:
 
 ```kt
 val count: Int = 2
 ```
 
-This statement creates an integer variable called count that holds the number 2.
+Этот оператор создает целочисленную переменную count, которая содержит число 2.
 
 <img src="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/2e4abc418a62b510_856.png" width="200">
 
-It can take a while to become familiar with reading the syntax (or format) for declaring a variable in Kotlin. The following diagram shows where each detail about the variable should be located, as well as the location of spaces and symbols.
+Знакомство с синтаксисом (или форматом) объявления переменной в Kotlin может занять некоторое время. На следующей диаграмме показано, где должна располагаться каждая деталь переменной, а также расположение пробелов и символов.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/dfcab30373610cbb_856.png)
 
-In the context of the count variable example, you can see that the variable declaration starts with the word val. The name of the variable is count. The data type is Int, and the initial value is 2.
+В контексте примера с переменной count вы видите, что объявление переменной начинается со слова val. Имя переменной - count. Тип данных - Int, а начальное значение - 2.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/50906b878985720e_856.png)
 
-Each part of the variable declaration is explained in more detail below.
+Ниже приводится более подробное описание каждой части объявления переменной.
 
-Keyword to define new variable
-To define a new variable, start with the Kotlin keyword val (which stands for value). Then the Kotlin compiler knows that a variable declaration is in this statement.
+### Ключевое слово для определения новой переменной
 
-Variable name
-Just like you name a function, you also name a variable. In the variable declaration, the variable name follows the val keyword.
+Чтобы определить новую переменную, начните с ключевого слова **val** (что означает value) в Kotlin. Тогда компилятор Kotlin поймет, что в этом выражении находится объявление переменной.
+
+### Имя переменной
+Точно так же, как вы называете функцию, вы называете и переменную. В объявлении переменной имя переменной следует за ключевым словом val.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/f978656666936b4f_856.png)
 
 
-You can choose any variable name you want, but as a best practice, avoid using Kotlin keywords as a variable name.
+Вы можете выбрать любое имя переменной, но в качестве лучшей практики избегайте использования ключевых слов Kotlin в качестве имени переменной.
 
-It's best to choose a name that describes the data that the variable holds so that your code is easier to read.
+Лучше всего выбрать имя, описывающее данные, которые хранит переменная, чтобы ваш код было легче читать.
 
-Variable names should follow the camel case convention, as you learned with function names. The first word of the variable name is all lower case. If there are multiple words in the name, there are no spaces between words, and all other words should begin with a capital letter.
+Имена переменных должны следовать соглашению о верблюжьем регистре. Первое слово в имени переменной пишется в нижнем регистре. Если в имени несколько слов, пробелы между ними не ставятся, а все остальные слова должны начинаться с прописной буквы.
 
-Example variable names:
+Примеры имен переменных:
 
-numberOfEmails
-cityName
-bookPublicationDate
-For the code example shown earlier, count is the name of the variable.
+- numberOfEmails
+- cityName
+- bookPublicationDate
+
+В примере кода, показанном ранее, count - это имя переменной.
 
 ```kt
 val count: Int = 2
 ```
 
-Variable data type
-After the variable name, you add a colon, a space, and then the data type of the variable. As mentioned earlier, String, Int, Double, Float, and Boolean are some of the basic Kotlin data types. You'll learn more data types later in this course. Remember to spell data types exactly as shown and begin each with a capital letter.
+### Тип данных переменной
+
+После имени переменной ставится двоеточие, пробел, а затем указывается тип данных переменной. Как упоминалось ранее, String, Int, Double, Float и Boolean - это основные типы данных Kotlin. Другие типы данных вы узнаете позже в этом курсе. Не забывайте писать типы данных именно так, как показано на рисунке, и начинать каждый из них с заглавной буквы.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/96e070df465b32c6_856.png)
 
-For the count variable example, Int is the data type of the variable.
+В примере с переменной count типом данных переменной является Int.
 
 ```kt
 val count: Int = 2
 ```
 
-Assignment operator
-In the variable declaration, the equal sign symbol (=) follows the data type. The equal sign symbol is called the assignment operator. The assignment operator assigns a value to the variable. In other words, the value on the right-hand side of the equal sign gets stored in the variable on the left-hand side of the equal sign.
+### Оператор присваивания
+
+В объявлении переменной после типа данных следует символ знака равенства (=). Символ знака равенства называется **оператором присваивания**. Оператор присваивания присваивает переменной значение. Другими словами, значение, стоящее в правой части знака равенства, сохраняется в переменной, стоящей в левой части знака равенства.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/31056b7a9891d9a5_856.png)
 
-Variable initial value
-The variable value is the actual data that's stored in the variable.
+### Начальное значение переменной
+Значение переменной - это фактические данные, которые хранятся в переменной.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/14c69d3231012a14_856.png)
 
-For the count variable example, the number 2 is the initial value of the variable.
+В примере с переменной count число 2 является начальным значением переменной.
 
 ```kt
 val count: Int = 2
 ```
 
-You may also hear the phrase: "the count variable is initialized to 2." This means that 2 is the first value stored in the variable when the variable is declared.
+Вы также можете услышать фразу: «Переменная count инициализирована на 2». Это означает, что 2 - это первое значение, которое сохраняется в переменной при ее объявлении.
 
-The initial value will be different depending on the data type declared for the variable.
+Начальное значение будет отличаться в зависимости от типа данных, объявленного для переменной.
 
-Refer to the following table which you may recognize from earlier in the codelab. The third column shows example values that can be stored in a variable of each corresponding type. These values are called literals because they are fixed or constant values (the value is constantly the same). As an example, the integer 32 is always going to have the value of 32. In contrast, a variable is not a literal because its value can change. You may hear these literal values referred to based on their type: string literal, integer literal, boolean literal, etc.
+Обратитесь к следующей таблице 1, которую вы можете узнать из предыдущего раздела. В третьем столбце приведены примеры значений, которые можно хранить в переменной каждого соответствующего типа. Эти значения называются литералами, поскольку они являются фиксированными или постоянными (значение постоянно одно и то же). Например, целое число 32 всегда будет иметь значение 32. В отличие от этого, переменная не является литералом, поскольку ее значение может меняться. Вы можете услышать, как литеральные значения называются в зависимости от их типа: строковый литерал, целочисленный литерал, булевский литерал и т. д.
 
-It's important to provide an appropriate and valid value according to the data type of the variable. For instance, you can't store a string literal like "Hello" inside a variable of type Int because the Kotlin compiler will give you an error.
+Важно указать подходящее и правильное значение в соответствии с типом данных переменной. Например, вы не можете хранить строковый литерал типа «Hello» в переменной типа Int, потому что компилятор Kotlin выдаст ошибку.
 
-Use a variable
-The following is the original program you ran in the Kotlin Playground. So far you learned that the second line of code creates a new integer variable called count with a value of 2.
+### Использование переменной
+Ниже приведена исходная программа, которую вы запускали в Idea. Вы узнали, что вторая строка кода создает новую целочисленную переменную count со значением 2.
 
 ```kt
 fun main() {
@@ -278,32 +292,33 @@ fun main() {
 }
 ```
 
-Now look at the third line of code. You are printing the count variable to the output:
+Теперь посмотрите на третью строку кода. Вы выводите на экран переменную count:
 
 ```kt
 println(count)
 ```
 
-Notice there are no quotation marks around the word count. It is a variable name, not a string literal. (You would find quotation marks around the word if it was a string literal.) When you run the program, the Kotlin compiler evaluates the expression inside the parentheses, which is count, for the println() instruction. Since the expression evaluates to 2, then the println() method is called with 2 as the input: println(2).
+Обратите внимание, что вокруг слова count нет кавычек. Это имя переменной, а не строковый литерал. (При запуске программы компилятор Kotlin оценивает выражение в круглых скобках, которое является count, для инструкции println(). Поскольку выражение оценивается в 2, то вызывается метод println() с 2 в качестве входных данных: println(2).
 
-Hence the output of the program is:
-
+Таким образом, результатом работы программы будет:
 ```
 2
 ```
 
-The number by itself in the output is not very useful. It would be more helpful to have a more detailed message printed in the output to explain what the 2 represents.
+Само по себе число в выводе не очень полезно. Было бы полезнее, если бы в выводе было выведено более подробное сообщение, объясняющее, что представляет собой цифра 2.
 
-String template
-A more helpful message to display in the output is:
+### Шаблон строки
+Более полезным сообщением для вывода будет следующее:
+
 
 ```kt
 You have 2 unread messages.
 ```
 
-Follow these steps so that the program outputs a more helpful message.
+Выполните следующие шаги, чтобы программа выводила более полезное сообщение.
 
-Update your program in the Kotlin Playground with the following code. For the println() call, pass in a string literal that contains the count variable name. Remember to surround the text with quotation marks. Note that this will not give you the results you expect. You'll fix the issue in a later step.
+Обновите свою программу в Idea, добавив следующий код. Для вызова `println()` передайте строковый литерал, содержащий имя переменной count. Не забудьте окружить текст кавычками. Обратите внимание, что это не даст вам ожидаемых результатов. Вы решите эту проблему на следующем этапе.
+
 
 ```kt
 fun main() {
@@ -312,19 +327,22 @@ fun main() {
 }
 ```
 
-- Run the program and the output should display:
+- Запустите программу, и на экране должен появиться результат:
+
 
 ```
 You have count unread messages.
 ```
 
-That sentence doesn't make sense! You want the value of the count variable to be displayed in the message, not the variable name.
+Это предложение не имеет смысла! Вы хотите, чтобы в сообщении отображалось значение переменной count, а не ее имя.
 
-To fix the output, you need a string template. This is a string template because it contains a template expression, which is a dollar sign ($) followed by a variable name. A template expression is evaluated, and its value gets substituted into the string.
+Чтобы исправить вывод, вам понадобится строковый шаблон. Это строковый шаблон, потому что он содержит выражение шаблона, которое представляет собой знак доллара ($), за которым следует имя переменной. Шаблонное выражение оценивается, и его значение подставляется в строку.
+
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/c9d83ec2fa51b2ff_856.png)
 
-Add a dollar sign $ before the count variable. In this case, the template expression $count evaluates to 2, and the 2 gets substituted into the string where the expression was located.
+Добавьте знак доллара $ перед переменной count. В этом случае шаблонное выражение $count оценивается в 2, и 2 подставляется в строку, в которой находилось выражение.
+
 
 ```kt
 fun main() {
@@ -333,15 +351,17 @@ fun main() {
 }
 ```
 
-When you run the program, the output matches the desired goal:
+Когда вы запускаете программу, результат соответствует желаемой цели:
+
 
 ```kt
 You have 2 unread messages.
 ```
 
-That sentence makes much more sense to the user!
+Это предложение имеет гораздо больше смысла для пользователя!
 
-Now change the initial value of the count variable to a different integer literal. For example, you could choose the number 10. Leave the rest of the code in the program unchanged.
+Теперь измените начальное значение переменной count на другой целочисленный литерал. Например, вы можете выбрать число 10. Остальной код программы оставьте без изменений.
+
 
 ```kt
 fun main() {
@@ -350,15 +370,17 @@ fun main() {
 }
 ```
 
-Run the program. Notice that the output changes accordingly and you didn't even need to change the println() statement in your program.
+Запустите программу. Обратите внимание, что вывод изменился соответствующим образом, и вам даже не пришлось менять оператор println() в своей программе.
+
 
 ```kt
 You have 10 unread messages
 ```
 
-You can see how useful a string template can be. You only wrote the string template once in your code ("You have $count unread messages."). If you change the initial value of the count variable, the println() statement still works. Your code is more flexible now!
+Вы видите, насколько полезным может быть строковый шаблон. Вы написали шаблон строки только один раз в своем коде («У вас $count непрочитанных сообщений.»). Если вы измените начальное значение переменной count, оператор println() по-прежнему будет работать. Теперь ваш код стал более гибким!
 
-To further emphasize this point, compare the following two programs. The first program uses a string literal, with the exact number of unread messages directly in the string. This program only works when your user has 10 unread messages.
+Чтобы еще раз подчеркнуть этот момент, сравните две следующие программы. В первой программе используется строковый литерал с точным количеством непрочитанных сообщений непосредственно в строке. Эта программа работает только в том случае, если у пользователя 10 непрочитанных сообщений.
+
 
 ```kt
 fun main() {
@@ -366,7 +388,8 @@ fun main() {
 }
 ```
 
-By using a variable and a string template in the second program, your code can adapt to more scenarios. This second program is more flexible!
+Благодаря использованию переменной и шаблона строки во второй программе, ваш код может адаптироваться к большему количеству сценариев. Эта вторая программа более гибкая!
+
 
 ```kt
 fun main() {
@@ -375,44 +398,47 @@ fun main() {
 }
 ```
 
-Type inference
-Here's a tip that allows you to write less code when declaring variables.
+Вывод типа
+Вот совет, который позволит вам писать меньше кода при объявлении переменных.
 
-Type inference is when the Kotlin compiler can infer (or determine) what data type a variable should be, without the type being explicitly written in the code. That means you can omit the data type in a variable declaration, if you provide an initial value for the variable. The Kotlin compiler looks at the data type of the initial value, and assumes that you want the variable to hold data of that type.
+Вывод типа - это когда компилятор Kotlin может сделать вывод (или определить), какой тип данных должен быть у переменной, без явного указания типа в коде. Это означает, что вы можете не указывать тип данных в объявлении переменной, если задаете для нее начальное значение. Компилятор Kotlin посмотрит на тип данных начального значения и предположит, что вы хотите, чтобы переменная содержала данные этого типа.
 
-The following syntax is for a variable declaration that uses type inference:
+Ниже приведен синтаксис объявления переменной, в котором используется вывод типа:
+
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/8364ee0a12aca09_856.png)
 
-Returning to the count example, the program initially contained this line of code:
+Возвращаясь к примеру с подсчетом, скажу, что изначально программа содержала такую строку кода:
 
 ```kt
 val count: Int = 2
 ```
 
-However, this line of code can also be written as follows. Notice that the colon symbol (:) and Int data type are omitted. The updated syntax has fewer words to type, and it achieves the same outcome of creating an Int variable called count with a value of 2.
+Однако эту строку кода можно записать и так. Обратите внимание, что символ двоеточия (:) и тип данных Int опущены. В обновленном синтаксисе меньше слов, и достигается тот же результат - создание переменной Int под названием count со значением 2.
 
 ```kt
 val count = 2
 ```
 
-The Kotlin compiler knows that you want to store 2 (a whole number integer) into the variable count, so it can infer that the count variable is of type Int. Convenient, right? This is one example of how writing Kotlin code is more concise!
+Компилятор Kotlin знает, что вы хотите сохранить 2 (целое число) в переменной count, поэтому он может сделать вывод, что переменная count имеет тип Int. Удобно, правда? Это один из примеров того, как писать код на Kotlin становится более лаконичным!
 
-> Note: If you don't provide an initial value when you declare a variable, you must specify the type.
-In this line of code, no initial value is provided, so you must specify the data type:
+
+> Примечание: Если вы не указываете начальное значение при объявлении переменной, вы должны указать ее тип.
+В этой строке кода начальное значение не указано, поэтому необходимо указать тип данных:
 val count: Int
-In this line of code, an assigned value is provided, so you can omit the data type:
+В этой строке кода указывается назначенное значение, поэтому тип данных можно не указывать:
 val count = 2
 
-Even though this example only discusses a variable of type Int, the concept of type inference applies to all data types in Kotlin.
+Несмотря на то, что в этом примере рассматривается только переменная типа Int, концепция вывода типа применима ко всем типам данных в Kotlin.
 
-Basic math operations with integers
-What is the difference between an Int variable with value 2 and a String variable with value "2"? When they both get printed to the output, they look the same.
+Основные математические операции с целыми числами
+В чем разница между переменной Int со значением 2 и переменной String со значением «2»? Когда они обе выводятся на экран, они выглядят одинаково.
 
-The advantage to storing integers as an Int (as opposed to a String) is that you can perform math operations with Int variables, such as addition, subtraction, division, and multiplication (see other operators). For example, two integer variables can be added together to get their sum. There are certainly cases where it's reasonable to have integers stored as Strings, but the purpose of this section is to show you what you can do with Int variables.
+Преимущество хранения целых чисел в виде Int (в отличие от String) заключается в том, что вы можете выполнять математические операции с переменными Int, такие как сложение, вычитание, деление и умножение (см. другие операторы). Например, две целочисленные переменные можно сложить, чтобы получить их сумму. Конечно, есть случаи, когда целесообразно хранить целые числа в виде строк, но цель этого раздела - показать, что можно делать с переменными Int.
 
-- Return to the Kotlin Playground and remove all the code in the code editor.
-- Create a new program where you define an integer variable for the number of unread emails in an inbox, and initialize it to a value such as 5. You can pick a different number if you'd like. Define a second integer variable for the number of read emails in an inbox. Initialize it to a value such as 100. You can pick a different number if you'd like. Then print out the total number of messages in the inbox by adding the two integer numbers together.
+- Вернитесь в Kotlin Playground и удалите весь код в редакторе кода.
+- Создайте новую программу, в которой определите целочисленную переменную для количества непрочитанных писем в папке «Входящие» и инициализируйте ее значением, например 5. При желании вы можете выбрать другое число. Определите вторую целочисленную переменную для количества прочитанных писем в папке «Входящие».Инициализируйте ее значением, например 100. При желании вы можете выбрать другое число. Затем выведите общее количество сообщений в папке «Входящие» путем сложения двух целых чисел.
+
 
 ```kt
 fun main() {
@@ -422,20 +448,23 @@ fun main() {
 }
 ```
 
-- Run the program and it should display the total number of messages in the inbox:
+- Запустите программу, и она должна отобразить общее количество сообщений в папке «Входящие»:
+
 
 ```kt
 You have 105 total messages in your inbox.
 ```
 
-For a string template, you learned that you can put the $ symbol before a single variable name. However, if you have a more complex expression, you must enclose the expression in curly braces with the $ symbol before the curly braces: ${unreadCount + readCount}. The expression within the curly braces, unreadCount + readCount, evaluates to 105. Then the value 105 is substituted within the string literal.
+Для строкового шаблона вы узнали, что перед именем одной переменной можно поставить символ $. Однако если у вас есть более сложное выражение, вы должны заключить его в фигурные скобки с символом $ перед фигурными скобками: ${unreadCount + readCount}. Выражение в фигурных скобках, unreadCount + readCount, оценивается в 105. Затем значение 105 подставляется в строковый литерал.
+
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/f86b6ec34074392_856.png)
 
-> Warning: If you forget the curly braces around the template expression, you will get unexpected results. You can test that out in the Kotlin Playground by changing the println() statement to println("You have $unreadCount + readCount total messages in your inbox.") and observing the output.
+> Предупреждение: Если вы забудете фигурные скобки вокруг шаблонного выражения, то получите неожиданные результаты. Вы можете проверить это в Kotlin Playground, изменив оператор println() на println(«У вас в папке входящих сообщений $unreadCount + readCount.») и наблюдая за выводом.
 
-To explore this topic further, create variables with different names and different initial values, and use template expressions to print messages to the output.
-For example, modify your program to print this out:
+Для дальнейшего изучения этой темы создайте переменные с разными именами и разными начальными значениями и используйте шаблонные выражения для печати сообщений на выходе.
+Например, измените свою программу так, чтобы она выводила следующее:
+
 
 ```kt
 100 photos
@@ -443,7 +472,8 @@ For example, modify your program to print this out:
 90 photos left
 ```
 
-Here's one way that you can write your program, though there are other correct ways to write it too!
+Вот один из способов написания программы, хотя есть и другие правильные способы!
+
 
 ```kt
 fun main() {
@@ -456,24 +486,26 @@ fun main() {
 ```
 
 
-# 4. Update variables
+ ### Обновление переменных
 
-When an app is running, the value of a variable may need to be updated. For example, in a shopping app, as the user adds items to the shopping cart, the cart total increases.
+Во время работы приложения может потребоваться обновить значение переменной. Например, в приложении для покупок, когда пользователь добавляет товары в корзину, общая сумма корзины увеличивается.
 
-Let's simplify the shopping use case into a simple program. The logic is written out below with human language, not in Kotlin. This is called pseudocode because it describes the key points of how the code will be written, but it doesn't contain all the details of the code.
+Давайте упростим пример с покупками до простой программы. Логика написана ниже человеческим языком, а не на Kotlin. Это называется псевдокодом, потому что он описывает ключевые моменты того, как будет написан код, но не содержит всех деталей кода.
 
-> Note: Pseudocode is not meant to be working code that can be compiled, that's why it's called pseudo code.
+> Примечание: Псевдокод не является рабочим кодом, который можно скомпилировать, поэтому он и называется псевдокодом.
 
 
-In the main function of a program:
 
-Create an integer cartTotal variable that starts at the value 0.
-The user adds a sweater that costs $20 to their shopping cart.
-Update the cartTotal variable to 20, which is the current cost of the items in their shopping cart.
-Print the total cost of the items in their cart, which is the cartTotal variable, to the output.
-To further simplify the code, you don't need to write the code for when the user adds items to the shopping cart. (You haven't learned about how a program can respond to user input yet. That will come in a later unit.) Hence, focus on the parts where you create, update, and print out the cartTotal variable.
+В функции main программы:
 
-Replace the existing code in the Kotlin Playground with the below program. In line 2 of the program, you initialize the cartTotal variable to the value 0. Since you provide an initial value, there's no need to specify the Int data type due to type inference. In line 3 of the program, you attempt to update the cartTotal variable to 20 with the assignment operator (=). In line 4 of the program, you print out the cartTotal variable using a string template.
+Создайте целочисленную переменную cartTotal, которая начинается со значения 0.
+Пользователь добавляет в корзину свитер стоимостью 20 долларов.
+Обновите переменную cartTotal до значения 20, что является текущей стоимостью товаров в корзине.
+Выведите на экран общую стоимость товаров в корзине, которая является переменной cartTotal.
+Чтобы еще больше упростить код, вам не нужно писать код, когда пользователь добавляет товары в корзину. (Вы еще не узнали о том, как программа может реагировать на ввод пользователя. Об этом мы расскажем в следующем разделе.) Поэтому сосредоточьтесь на тех частях, где вы создаете, обновляете и выводите на печать переменную cartTotal.
+
+Замените существующий код в Kotlin Playground на приведенную ниже программу. В строке 2 программы вы инициализируете переменную cartTotal значением 0. Поскольку вы указываете начальное значение, нет необходимости указывать тип данных Int из-за вывода типа. В строке 3 программы вы пытаетесь обновить переменную cartTotal до значения 20 с помощью оператора присваивания (=). В строке 4 программы вы выводите переменную cartTotal с помощью шаблона строки.
+
 
 ```kt
 fun main() {
@@ -483,22 +515,24 @@ fun main() {
 }
 ```
 
-Run the program, and you will get a compile error.
-Notice the error says that the val can't be reassigned. The error is on the third line of the program, which tries to change the value of the cartTotal variable to 20. The val cartTotal can't be reassigned to another value (20) after it's been assigned an initial value (0).
+Запустите программу, и вы получите ошибку компиляции.
+Обратите внимание, что в ошибке говорится о невозможности переназначения переменной val. Ошибка находится в третьей строке программы, которая пытается изменить значение переменной cartTotal на 20. Переменная val cartTotal не может быть переназначена на другое значение (20) после того, как ей было присвоено начальное значение (0).
+
 
 ```
 Val cannot be reassigned
 ```
 
-If you need to update the value of a variable, declare the variable with the Kotlin keyword var, instead of val.
+Если вам нужно обновить значение переменной, объявите ее с помощью ключевого слова var в Kotlin, а не val.
 
-val keyword - Use when you expect the variable value will not change.
-var keyword - Use when you expect the variable value can change.
-With val, the variable is read-only, which means you can only read, or access, the value of the variable. Once the value is set, you cannot edit or modify its value. With var, the variable is mutable, which means the value can be changed or modified. The value can be mutated.
+Ключевое слово val - используется, когда вы ожидаете, что значение переменной не изменится.
+Ключевое слово var - используется, когда предполагается, что значение переменной может измениться.
+При использовании val переменная доступна только для чтения, что означает, что вы можете читать или получать доступ только к значению переменной. Как только значение установлено, вы не можете редактировать или изменять его. При использовании var переменная является мутабельной, то есть ее значение может быть изменено или модифицировано. Значение может быть изменено.
 
-To remember the difference, think of val as a fixed value and var as variable. In Kotlin, it's recommended to use the val keyword over the var keyword when possible.
+Чтобы запомнить разницу, думайте о val как о фиксированном значении, а о var как о переменной. В Kotlin рекомендуется использовать ключевое слово val вместо ключевого слова var, когда это возможно.
 
-Update the variable declaration for cartTotal on line 2 of the program to use var instead of val. This is how the code should look:
+Обновите объявление переменной cartTotal в строке 2 программы, чтобы использовать var вместо val. Вот как должен выглядеть код:
+
 
 ```kt
 fun main() {
@@ -508,31 +542,37 @@ fun main() {
 }
 ```
 
-Notice the syntax of the code on line 3 of the program which updates the variable.
+Обратите внимание на синтаксис кода в строке 3 программы, который обновляет переменную.
+
 
 ```kt
 cartTotal = 20
 ```
 
-Use the assignment operator (=) to assign a new value (20) to the existing variable (cartTotal). You don't need to use the var keyword again because the variable is already defined.
+Используйте оператор присваивания (=), чтобы присвоить новое значение (20) существующей переменной (cartTotal). Вам не нужно снова использовать ключевое слово var, потому что переменная уже определена.
+
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/c78c68b803cb53cb_856.png)
 
-Using the box analogy, picture the value 20 being stored in the box labeled cartTotal.
+Используя аналогию с коробкой, представьте, что значение 20 хранится в ячейке с надписью cartTotal.
+
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/74b153a08d38d640_856.png)
 
-Here's a diagram for the general syntax for updating a variable, which has already been declared on an earlier line of code. Start the statement with the name of the variable you want to update. Add a space, the equal sign, followed by another space. Then write out the updated value for the variable.
+Вот схема общего синтаксиса обновления переменной, которая уже была объявлена в предыдущей строке кода. Начните оператор с имени переменной, которую вы хотите обновить. Добавьте пробел, знак равенства, а затем еще один пробел. Затем напишите обновленное значение переменной.
+
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/c1fc5d800976e702_856.png)
 
-Run your program and the code should successfully compile. It should print this output :
+Запустите вашу программу, и код должен успешно скомпилироваться. Он должен вывести следующее сообщение:
+
 
 ```
 Total: 20
 ```
 
-To see how the variable value changes while the program is running, print the cartTotal variable to the output after the variable is initially declared. See the code changes below. Line 3 has a new println() statement. There's also a blank line added on line 4 of the code. Blank lines do not have any impact on how the compiler understands the code. Add a blank line where it would make it easier to read your code by separating out related blocks of code.
+Чтобы увидеть, как изменяется значение переменной во время работы программы, выведите переменную cartTotal на экран после ее первоначального объявления. Смотрите изменения в коде ниже. В строке 3 появился новый оператор println(). В строке 4 кода также добавлена пустая строка. Пустые строки никак не влияют на то, как компилятор понимает код. Добавьте пустую строку там, где это облегчит чтение кода, отделив связанные блоки кода.
+
 
 ```kt
 fun main() {
@@ -544,78 +584,80 @@ fun main() {
 }
 ```
 
-Run the program again and the output should be:
+Запустите программу снова, и результат должен быть следующим:
+
 
 ```kt
 Total: 0
 Total: 20
 ```
 
-You can see that initially the shopping cart total is 0. Then it updates to 20. You successfully updated a variable! This was possible because you changed cartTotal from a read-only variable (with val) to a mutable variable (with var).
+Вы видите, что первоначально сумма в корзине равна 0. Затем она обновляется до 20. Вы успешно обновили переменную! Это стало возможным благодаря тому, что вы превратили cartTotal из переменной, доступной только для чтения (с помощью val), в изменяемую переменную (с помощью var).
 
-Remember that you should only use var to declare a variable if you expect the value to change. Otherwise you should default to using val to declare a variable. This practice makes your code safer. Using val ensures that variables won't get updated in your program if you don't expect them to. Once a val is assigned a value, it always stays that value.
+Помните, что использовать var для объявления переменной следует только в том случае, если вы ожидаете, что ее значение будет меняться. В противном случае следует по умолчанию использовать val для объявления переменной. Такая практика делает ваш код более безопасным. Использование val гарантирует, что переменные не будут обновляться в вашей программе, если вы этого не ожидаете. Если переменной val присвоено значение, оно всегда остается таким.
 
-> Note: If you are familiar with other programming languages, declaring a val is like declaring a constant value because it is a read-only variable. There are additional conventions to follow when declaring constants in Kotlin, which is too advanced for this codelab, but you can find them in the Constants section of the style guide.
+> Примечание: Если вы знакомы с другими языками программирования, объявление val похоже на объявление постоянного значения, поскольку это переменная, доступная только для чтения. При объявлении констант в Kotlin существуют дополнительные соглашения, которые слишком сложны для этого коделаба, но вы можете найти их в разделе Constants руководства по стилю.
 
-Increment and decrement operators
-Now you know that a variable must be declared as a var in order to update its value. Apply this knowledge to the email message example below that should look familiar.
+Операторы инкремента и декремента
+Теперь вы знаете, что переменная должна быть объявлена как var, чтобы обновить ее значение. Примените эти знания к приведенному ниже примеру с почтовым сообщением, который должен показаться вам знакомым.
 
-Replace the code in the Kotlin Playground with this program:
+Замените код в Kotlin Playground на эту программу:
 
-```kt
+
+``kt
 fun main() {
     val count: Int = 10
-    println("You have $count unread messages.")
+    println(«У вас $count непрочитанных сообщений.»)
 }
 ```
 
-Run the program. It should print out:
+Запустите программу. Она должна вывести:
 
-```kt
-You have 10 unread messages.
+``kt
+У вас есть 10 непрочитанных сообщений.
 ```
 
-However, now you can update the count to a different value. For example, when one new email arrives in the user's inbox, you can increase count by 1. (You don't need to write the code for the arrival of an email. Getting data from the internet is a more advanced topic for a much later unit.) For now, focus on the count variable increasing by 1 with this line of code:
+Однако теперь вы можете обновить счетчик до другого значения. Например, когда в папку входящих сообщений пользователя приходит одно новое письмо, вы можете увеличить счетчик на 1. (Вам не нужно писать код для получения письма. Получение данных из интернета - это более сложная тема для более позднего раздела). Пока же сосредоточьтесь на том, чтобы переменная count увеличивалась на 1 с помощью этой строки кода:
 
 ```kt
 count = count + 1
 ```
 
-The expression to the right of the equal sign is count + 1 and evaluates to 11. That is because the current value of count is 10 (which is on line 2 of the program) and 10 + 1 equals 11. Then with the assignment operator, the value 11 gets assigned or stored in the count variable.
+Выражение справа от знака равенства равно count + 1 и оценивается в 11. Это потому, что текущее значение count равно 10 (которое находится в строке 2 программы), а 10 + 1 равно 11. Затем с помощью оператора присваивания значение 11 присваивается или сохраняется в переменной count.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/d274bbe91769d766_856.png)
 
-Add this line of code to your program at the bottom of the main() function. Your code should look like the following:
+Добавьте эту строку кода в свою программу в нижней части функции main(). Ваш код должен выглядеть следующим образом:
+
+``kt
+fun main() {
+    var count = 10
+    println(«У вас $count непрочитанных сообщений.»)
+    count = count + 1
+}
+```
+
+Если вы запустите программу сейчас, вывод будет таким же, как и раньше, потому что вы не добавили никакого кода для использования переменной count после ее обновления.
+
+Добавьте еще один оператор print, который выведет количество непрочитанных сообщений после обновления переменной.
 
 ```kt
 fun main() {
     var count = 10
     println("You have $count unread messages.")
     count = count + 1
-}
-```
-
-If you run the program now, the output is the same as before because you haven't added any code to use the count variable after you updated it.
-
-Add another print statement that prints out the number of unread messages after the variable has been updated.
-
-```kt
-fun main() {
-    var count = 10
-    println("You have $count unread messages.")
-    count = count + 1
     println("You have $count unread messages.")
 }
 ```
 
-Run the program. The second message should display the updated count of 11 messages.
+Запустите программу. Во втором сообщении должно появиться обновленное число 11 сообщений.
 
 ```
-You have 10 unread messages.
-You have 11 unread messages.
+У вас 10 непрочитанных сообщений.
+У вас 11 непрочитанных сообщений.
 ```
 
-For shorthand, if you want to increase a variable by 1, you can use the increment operator (++) which is made up of two plus symbols. By using these symbols directly after a variable name, you tell the compiler that you want to add 1 to the current value of the variable, and then store the new value in the variable. The following two lines of code are equivalent, but using the ++ increment operator involves less typing.
+Для сокращения, если вы хотите увеличить переменную на 1, вы можете использовать оператор инкремента (++), состоящий из двух символов плюс. Используя эти символы непосредственно после имени переменной, вы сообщаете компилятору, что хотите прибавить 1 к текущему значению переменной, а затем сохранить новое значение в переменной. Следующие две строки кода эквивалентны, но использование оператора инкремента ++ требует меньшего количества символов.
 
 ```
 count = count + 1
@@ -625,48 +667,47 @@ count = count + 1
 count++
 ```
 
-Make this modification to your code and then run your program. There should be no spaces between the variable name and the increment operator.
+Внесите это изменение в ваш код и запустите программу. Между именем переменной и оператором инкремента не должно быть пробелов.
 
-```kt
+``kt
 fun main() {
     var count = 10
-    println("You have $count unread messages.")
+    println(«У вас $count непрочитанных сообщений.»)
     count++
-    println("You have $count unread messages.")
+    println(«У вас $count непрочитанных сообщений.»)
 }
 ```
 
-Run the program. The output is the same, but now you learned about a new operator!
+Запустите программу. Результат тот же, но теперь вы узнали о новом операторе!
 
 ```
-You have 10 unread messages.
-You have 11 unread messages.
+У вас есть 10 непрочитанных сообщений.
+У вас 11 непрочитанных сообщений.
 ```
 
-Now modify line 4 of your program to use the decrement operator (--) after the count variable name. The decrement operator is made up of two minus symbols. By placing the decrement operator after the variable name, you tell the compiler that you want to decrease the value of the variable by 1 and store the new value into the variable.
+Теперь измените строку 4 вашей программы, чтобы использовать оператор декремента (--) после имени переменной count. Оператор декремента состоит из двух символов минус. Помещая оператор декремента после имени переменной, вы сообщаете компилятору, что хотите уменьшить значение переменной на 1 и сохранить новое значение в переменной.
 
-```kt
+``kt
 fun main() {
     var count = 10
-    println("You have $count unread messages.")
+    println(«У вас $count непрочитанных сообщений.»)
     count--
-    println("You have $count unread messages.")
+    println(«У вас $count непрочитанных сообщений.»)
 }
 ```
 
-Run the program. It should print this output:
-
+Запустите программу. Она должна вывести следующее сообщение:
 ```
-You have 10 unread messages.
-You have 9 unread messages.
+У вас 10 непрочитанных сообщений.
+У вас 9 непрочитанных сообщений.
 ```
 
-In this section, you learned how to update a mutable variable using the increment operator (++) and the decrement operator (--). More specifically, count++ is the same as count = count + 1 and count-- is the same as count = count - 1.
+В этом разделе вы узнали, как обновлять изменяемую переменную с помощью оператора инкремента (++) и оператора декремента (--). Более конкретно, count++ - это то же самое, что count = count + 1, а count-- - это то же самое, что count = count - 1.
 
 
-# Explore other data types
+# Изучите другие типы данных
 
-Earlier in the codelab, you were introduced to some common basic data types: String, Int, Double, and Boolean. You just used the Int data type, now you will explore other data types.
+Ранее в codelab вы познакомились с некоторыми распространенными базовыми типами данных: String, Int, Double и Boolean. Вы только что использовали тип данных Int, теперь вы изучите другие типы данных.
 
 |Kotlin data type| What kind of data it can contain|
 |:--|:---|
@@ -675,16 +716,16 @@ Earlier in the codelab, you were introduced to some common basic data types: Str
 |Double|Decimal number|
 |Boolean|true or false (only two possible values)|
 
-Try these programs in the Kotlin Playground to see what the output is.
+Попробуйте эти программы в Kotlin Playground и посмотрите, что получится на выходе.
 
 ### Double
-When you need a variable with a decimal value, use a Double variable. To learn about its valid range, refer to this table and look at the decimal digits it can store for example.
+Когда вам нужна переменная с десятичным значением, используйте переменную Double. Чтобы узнать о ее допустимом диапазоне, обратитесь к этой таблице и посмотрите, какие десятичные цифры она может хранить, например.
 
-> Note: The name of the Double data type comes from the data type having double precision compared to the Float data type, which has single precision. Precision is how many decimal digits they can hold. Hence, a Double variable can store a more precise value. This table shows more details about the specific differences between Double and Float types if you're curious. This section of the codelab focuses on using Double for working with decimal numbers.
+> Примечание: Название типа данных Double происходит от того, что этот тип данных имеет двойную точность по сравнению с типом данных Float, который имеет одинарную точность. Точность - это количество десятичных цифр, которые они могут хранить. Таким образом, переменная Double может хранить более точное значение. Если вам интересно, в этой таблице приведены более подробные сведения о конкретных различиях между типами Double и Float. Этот раздел коделаба посвящен использованию Double для работы с десятичными числами.
 
-Imagine you're navigating to a destination, and your trip is split into three separate parts because you need to make stops along the way. This program displays the total distance left to reach your destination.
+Представьте, что вы направляетесь в пункт назначения, и ваше путешествие разделено на три отдельные части, потому что вам нужно делать остановки по пути. Эта программа отображает общее расстояние, оставшееся до пункта назначения.
 
-- Enter this code in the Kotlin Playground. Can you understand what is happening on each line of code?
+- Введите этот код в Kotlin Playground. Можете ли вы понять, что происходит в каждой строке кода?
 
 ```kt
 fun main() {
@@ -696,19 +737,19 @@ fun main() {
 }
 ```
 
-Three variables called trip1, trip2, and trip3 are declared to represent the distance of each part of the trip. All of them are Double variables because they store decimal values. Use val to declare each variable because their values do not change over the course of the program. The program also creates a fourth variable called totalTripLength which is currently initialized to 0.0. The last line of the program prints a message with the value of the totalTripLength variable.
+Три переменные под названием trip1, trip2 и trip3 объявлены для представления расстояния каждой части поездки. Все они являются переменными Double, поскольку хранят десятичные значения. Используйте val для объявления каждой переменной, потому что их значения не меняются в процессе работы программы. Программа также создает четвертую переменную TotalTripLength, которая в данный момент инициализирована значением 0.0. В последней строке программы печатается сообщение со значением переменной totalTripLength.
 
-- Fix the code so that the totalTripLength variable is the sum of all three trip lengths.
+- Исправьте код так, чтобы переменная totalTripLength была суммой всех трех длин поездок.
 
 ```
 val totalTripLength: Double = trip1 + trip2 + trip3
 ```
 
-The expression on the right of the equal sign evaluates to 9.02 because 3.20 + 4.10 + 1.72 equals 9.02. The value of 9.02 gets stored into the totalTripLength variable.
+Выражение справа от знака равенства оценивается в 9.02, потому что 3.20 + 4.10 + 1.72 равно 9.02. Значение 9,02 сохраняется в переменной totalTripLength.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/9286c52fa350bb58_856.png)
 
-Your whole program should look like the below code:
+Вся ваша программа должна выглядеть так, как показано ниже:
 
 ```kt
 fun main() {
@@ -720,13 +761,13 @@ fun main() {
 }
 ```
 
-- Run the program. It should print this out:
+- Запустите программу. Она должна вывести следующее:
 
 ```
 9.02 miles left to destination
 ```
 
-Update your code to remove the unnecessary Double data type from the variable declarations because of type inference. The Kotlin compiler can infer that these variables are Double data types based on the decimal numbers provided as initial values.
+Обновите код, чтобы удалить ненужный тип данных Double из объявлений переменных из-за вывода типа. Компилятор Kotlin может сделать вывод о том, что эти переменные относятся к типу данных Double, на основании десятичных чисел, предоставленных в качестве начальных значений.
 
 ```kt
 fun main() {
@@ -738,12 +779,12 @@ fun main() {
 }
 ```
 
-Run your code again to ensure that your code still compiles. The output should be the same, but now your code is simpler!
+Запустите код еще раз, чтобы убедиться, что он по-прежнему компилируется. Результат должен быть таким же, но теперь ваш код стал проще!
 
 ### String
-When you need a variable that can store text, use a String variable. Remember to use quotation marks around String literal values, such as "Hello Kotlin", whereas the Int and Double literal values do not have quotes around them.
+Когда вам нужна переменная, которая может хранить текст, используйте переменную String. Не забывайте использовать кавычки вокруг литеральных значений String, таких как «Hello Kotlin», в то время как литеральные значения Int и Double не заключаются в кавычки.
 
-- Copy and paste this program into the Kotlin Playground.
+- Скопируйте и вставьте эту программу в Kotlin Playground.
 
 ```kt
 fun main() {
@@ -754,23 +795,23 @@ fun main() {
 }
 ```
 
-Notice that there are two String variables declared, a nextMeeting variable and a date variable. Then a third String variable called reminder is declared, which is set equal to the nextMeeting variable plus the date variable.
+Обратите внимание, что объявлены две строковые переменные, переменная nextMeeting и переменная date. Затем объявляется третья строковая переменная reminder, которая устанавливается равной переменной nextMeeting плюс переменная date.
 
-With the + symbol, you can add two strings together, which is called concatenation. The two strings are combined together, one after the other. The result of the expression, nextMeeting + date is "Next meeting:January 1" as shown in the diagram below.
+С помощью символа + можно сложить две строки вместе, что называется конкатенацией. Две строки объединяются одна за другой. Результатом выражения nextMeeting + date будет «Следующая встреча:1 января», как показано на диаграмме ниже.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/b474317797c50bf_856.png)
 
-The value "Next meeting:January 1" is then stored into the reminder variable using the assignment operator on line 4 of the program.
+Значение «Следующая встреча:1 января» сохраняется в переменной reminder с помощью оператора присваивания в строке 4 программы.
 
-- Run your program. It should print this out:
+- Запустите свою программу. Она должна вывести следующее:
 
-```kt
-Next meeting:January 1
+``kt
+Следующая встреча:1 января
 ```
 
-When you concatenate two strings together, there are no extra spaces added between the strings. If you want a space after the colon in the resulting string, you need to add the space to one string or the other.
+При конкатенации двух строк между ними не добавляются пробелы. Если вам нужен пробел после двоеточия в результирующей строке, вам нужно добавить пробел в одну или другую строку.
 
-- Update your nextMeeting variable to have an extra space at the end of the string before the closing quotation mark. (Alternatively, you could have added an extra space to the beginning of the date variable). Your program should look like the following:
+- Обновите переменную nextMeeting, чтобы в конце строки перед закрывающей кавычкой появился дополнительный пробел. (В качестве альтернативы можно было бы добавить дополнительный пробел в начало переменной date). Ваша программа должна выглядеть следующим образом:
 
 ```kt
 fun main() {
@@ -781,25 +822,25 @@ fun main() {
 }
 ```
 
-- Run your program again and now there should be a space after the colon in the output message.
+- Запустите программу снова, и теперь в выходном сообщении после двоеточия должен быть пробел.
 
 ```
-Next meeting: January 1
+Следующая встреча: 1 января
 ```
 
-- Modify the code so that you concatenate - or add - another piece of text to the expression that gets stored in the reminder variable.
+- Измените код так, чтобы конкатенировать - или добавить - еще один фрагмент текста к выражению, которое сохраняется в переменной напоминания.
 
-Use the + symbol to add the string literal " at work" to the end of the reminder string.
+Используйте символ +, чтобы добавить строковый литерал « на работе» в конец строки напоминания.
 
-- Run the program.
+- Запустите программу.
 
-It should print this output:
+Она должна вывести следующее сообщение:
 
 ```
-Next meeting: January 1 at work
+Следующая встреча: 1 января на работе
 ```
 
-The code below shows you one way that you could implement the behavior.
+В приведенном ниже коде показан один из способов реализации этого поведения.
 
 ```kt
 fun main() {
@@ -810,40 +851,40 @@ fun main() {
 }
 ```
 
-Notice that there are no quotation marks around nextMeeting and date because they are names of existing string variables (where their respective values are text with quotes around them). Conversely, the literal " at work" is not previously defined in any variable, so use quotations around this text in order for the compiler to know that this is a string that should be concatenated onto the other strings.
+Обратите внимание, что вокруг nextMeeting и date нет кавычек, потому что это имена существующих строковых переменных (где их соответствующие значения - это текст с кавычками вокруг них). И наоборот, литерал « at work» ранее не был определен ни в одной переменной, поэтому используйте кавычки вокруг этого текста, чтобы компилятор знал, что это строка, которая должна быть конкатенирована с другими строками.
 
-Technically, you can achieve the same output by declaring a single String variable with the full text instead of using separate variables. However, the purpose of this exercise is to demonstrate how you can declare and manipulate String variables, especially how to concatenate separate strings.
+Технически, вы можете получить тот же результат, объявив одну переменную String с полным текстом вместо использования отдельных переменных. Однако цель этого упражнения - продемонстрировать, как можно объявлять переменные String и работать с ними, особенно как конкатенировать отдельные строки.
 
-When reading code that contains strings, you may come across escape sequences. Escape sequences are characters that are preceded with a backslash symbol (\), which is also called an escaping backslash.
-An example is seeing \" within a string literal like in the below example. Copy and paste this code into the Kotlin Playground.
+При чтении кода, содержащего строки, вы можете столкнуться с экранирующими последовательностями. Эскейп-последовательности - это символы, которым предшествует символ обратной косой черты (\), который также называется экранирующей обратной косой чертой.
+Примером может служить символ \» внутри строкового литерала, как в примере ниже. Скопируйте и вставьте этот код в Kotlin Playground.
 
-```kt
+``kt
 fun main() {
-    println("Say \"hello\"")
+    println(«Скажи \»привет\")
 }
 ```
 
-You learned earlier to use double quotation marks around a string literal. But what if you want to use the " symbol in your string? Then you need to add the backslash symbol before the double quotation mark as \" within your string. Remember that there should still be double quotation marks around the whole string.
+Ранее вы научились использовать двойные кавычки вокруг строкового литерала. Но что, если вы хотите использовать символ « в строке? Тогда вам нужно добавить символ обратной косой черты перед двойными кавычками как \» в вашей строке. Помните, что вокруг всей строки должны оставаться двойные кавычки.
 
-Run the program to see the output. It should show:
+Запустите программу, чтобы увидеть результат. В результате должно получиться:
 
 ```
 Say "hello"
 ```
 
-In the output, there are quotation marks displayed around hello because we added \" before and after hello in the println() statement.
+В выводе отображаются кавычки вокруг hello, потому что мы добавили \» перед и после hello в операторе println().
 
-For other escape sequences supported in Kotlin, refer to the documentation page on escape sequences. For example, if you want a new line in your string, use the \ symbol before the character n as in \n.
+О других управляющих последовательностях, поддерживаемых в Kotlin, читайте на странице документации по управляющим последовательностям. Например, если вам нужна новая строка в строке, используйте символ \ перед символом n, как в \n.
 
-Now you've learned about concatenating strings and also escape sequences within strings. Move onto the last data type that this codelab covers.
+Теперь вы узнали о конкатенации строк, а также об экранирующих последовательностях внутри строк. Переходим к последнему типу данных, который рассматривается в этой кодовой лаборатории.
 
 # Boolean
 
-The Boolean data type is useful when your variable only has two possible values represented by true or false.
+Тип данных Boolean полезен, когда переменная имеет только два возможных значения - true или false.
 
-An example is a variable that represents whether a device's airplane mode is on or off, or whether an app's notifications are enabled or disabled.
+Примером может служить переменная, которая показывает, включен или выключен авиарежим на устройстве, или включены или выключены уведомления в приложении.
 
-Enter this code in the Kotlin Playground. In line 2 of this program, you declare a Boolean variable called notificationsEnabled and initialize it to true. Technically, you can omit : Boolean in the declaration, so you can remove it if you'd like. In line 3 of the program, you print out the value of the notificationsEnabled variable.
+Введите этот код в Kotlin Playground. В строке 2 этой программы вы объявляете булеву переменную notificationsEnabled и инициализируете ее значением true. Технически, вы можете опустить : Boolean в объявлении, так что вы можете удалить его, если хотите. В строке 3 программы вы выводите значение переменной notificationsEnabled.
 
 ```kt
 fun main() {
@@ -852,28 +893,28 @@ fun main() {
 }
 ```
 
-Run the program, and it should print this out:
+Запустите программу, и она должна вывести следующее:
 
 ```
 true
 ```
 
-Change the initial value of the Boolean to false on line 2 of the program.
+Измените начальное значение булевой функции на false в строке 2 программы.
 
-```kt
+``kt
 fun main() {
     val notificationsEnabled: Boolean = false
     println(notificationsEnabled)
 }
 ```
 
-Run the program, and it should print this out:
+Запустите программу, и она должна вывести следующее:
 
 ```
 false
 ```
 
-- Other data types can be concatenated to Strings. For example, you can concatenate Booleans to Strings. Use the + symbol to concatenate (or append) the value of the notificationsEnabled boolean variable onto the end of the "Are notifications enabled? " string.
+- К строкам можно конкатенировать и другие типы данных. Например, к строкам можно присоединять булевы числа. Используйте символ + для конкатенации (или добавления) значения булевой переменной notificationsEnabled в конец строки «Включены ли уведомления? «.
 
 ```kt
 fun main() {
@@ -882,47 +923,47 @@ fun main() {
 }
 ```
 
-- Run the program to see the result of the concatenation. The program should print this output:
+- Запустите программу, чтобы увидеть результат конкатенации. Программа должна вывести следующее сообщение:
 
 ```
-Are notifications enabled? false
+Уведомления включены? false
 ```
 
-You can see that it's possible to set the Boolean variable to a true or false value. Boolean variables enable you to code more interesting scenarios in which you execute some set of instructions when a Boolean variable has a true value. Or if the Boolean has a false value, you skip those instructions. You learn more about Booleans in a future codelab.
+Вы видите, что можно установить булеву переменную в значение true или false. Булевы переменные позволяют создавать более интересные сценарии, в которых вы выполняете некоторый набор инструкций, когда булева переменная имеет истинное значение. Или, если булева переменная имеет ложное значение, вы пропускаете эти инструкции. Подробнее о булевых переменных вы узнаете в одном из следующих кодовых уроков.
 
 
-# 6. Coding conventions
-In the previous codelab, you were introduced to the Kotlin style guide for writing Android code in a consistent way as recommended by Google and followed by other professional developers.
+# 6. Соглашения по кодированию
+В предыдущем коделабе вы познакомились с руководством по стилю Kotlin для написания кода для Android в соответствии с рекомендациями Google и рекомендациями других профессиональных разработчиков.
 
-Here are a couple of other formatting and coding conventions for you to follow based on the new topics you learned:
+Вот несколько других соглашений по форматированию и кодированию, которые вы должны соблюдать, исходя из новых тем, которые вы узнали:
 
-Variable names should be in camel case and start with a lowercase letter.
-In a variable declaration, there should be a space after a colon when you specify the data type.
+Имена переменных должны быть в верблюжьем регистре и начинаться со строчной буквы.
+В объявлении переменной после двоеточия должен стоять пробел, когда вы указываете тип данных.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/932144819db18c30_856.png)
 
-There should be a space before and after an operator like the assignment (=), addition (+), subtraction (-), multiplication (*), division (/) operators and more.
+Перед и после оператора должен стоять пробел, как, например, перед операторами присваивания (=), сложения (+), вычитания (-), умножения (*), деления (/) и другими.
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/f4ee4d292ec7a78a_856.png)
 
 ![](https://developer.android.com/static/codelabs/basic-android-kotlin-compose-variables/img/34f053ecba5f5a0b_856.png)
 
-As you write more complex programs, there is a recommended limit of 100 characters per line. That ensures that you can read all the code in a program easily on your computer screen, without needing to scroll horizontally when reading code.
+При написании более сложных программ рекомендуется ограничение в 100 символов на строку. Это гарантирует, что вы сможете легко прочитать весь код программы на экране компьютера, без необходимости горизонтальной прокрутки при чтении кода.
 
 
-# 7. Commenting in your code
-When coding, another good practice to follow is to add comments that describe what the code is intended to do. Comments can help people who read your code follow it more easily. Two forward slash symbols, or //, indicate that the text after it on the rest of the line is considered a comment, so it isn't interpreted as code. It's common practice to add a space after the two forward slash symbols.
+# 7. Комментирование кода
+При написании кода еще одной хорошей практикой является добавление комментариев, которые описывают, для чего предназначен код. Комментарии могут помочь людям, читающим ваш код, легче его понять. Два символа прямой косой черты, или //, указывают на то, что текст после них в остальной части строки считается комментарием, поэтому он не интерпретируется как код. Обычно после двух символов прямой косой черты ставится пробел.
 
 
-// This is a comment.
+// Это комментарий.
 
-A comment can also start in the middle of a line of code. In this example, height = 1 is a normal coding statement. // Assume the height is 1 to start with is interpreted as a comment and not considered part of the code.
+Комментарий также может начинаться в середине строки кода. В этом примере height = 1 является обычным кодовым утверждением. // Предположим, что начало height = 1 интерпретируется как комментарий и не считается частью кода.
 
 ```kt
-height = 1 // Assume the height is 1 to start with
+height = 1 // Предположим, что высота равна 1 для начала
 ```
 
-If you want to describe the code in more detail with a long comment that exceeds 100 characters on a line, use a multi-line comment. Start the multi-line comment with a forward slash (/) and an asterisk symbol (*) as /*. Add an asterisk at the beginning of each new line of the comment. Then finally end the comment with an asterisk and forward slash symbol */.
+Если вы хотите описать код более подробно с помощью длинного комментария, превышающего 100 символов в строке, используйте многострочный комментарий. Начните многострочный комментарий с прямой косой черты (/) и символа звездочки (*), как /*. Добавьте звездочку в начале каждой новой строки комментария. И, наконец, завершите комментарий звездочкой и символом прямой косой черты */.
 
 ```kt
 /*
@@ -931,47 +972,46 @@ If you want to describe the code in more detail with a long comment that exceeds
  */
 ```
 
-This program contains single-line and multi-line comments that describe what's happening:
+Эта программа содержит однострочные и многострочные комментарии, которые описывают происходящее:
 
 ```kt
 /*
- * This program displays the number of messages
- * in the user's inbox.
+ * Эта программа отображает количество сообщений
+ * в папке входящих сообщений пользователя.
  */
 fun main() {
-    // Create a variable for the number of unread messages.
+    // Создаем переменную для количества непрочитанных сообщений.
     var count = 10
-    println("You have $count unread messages.")
+    println(«У вас $count непрочитанных сообщений.»)
 
-    // Decrease the number of messages by 1.
+    // Уменьшаем количество сообщений на 1.
     count--
-    println("You have $count unread messages.")
+    println(«У вас $count непрочитанных сообщений.»)
 }
 ```
 
-As mentioned earlier, you can add blank empty lines to your code to group related statements together and make the code easier to read.
+Как уже говорилось ранее, вы можете добавить в код пустые строки, чтобы сгруппировать связанные утверждения и сделать код более удобным для чтения.
 
-- Add some comments to an earlier code snippet that you used.
-- Run the program to ensure that the behavior didn't change because comments shouldn't affect the output.
+- Добавьте несколько комментариев к фрагменту кода, который вы использовали ранее.
+- Запустите программу, чтобы убедиться, что поведение не изменилось, поскольку комментарии не должны влиять на вывод.
 
 
-# 8. Conclusion
-Excellent work! You learned about variables in Kotlin, why variables are useful in programming, and how to create, update, and use them. You experimented with different basic data types in Kotlin, including the Int, Double, String, and Boolean data types. You also learned about the difference between the val and var keywords.
+### Заключение
+Отличная работа! Вы узнали о переменных в Kotlin, о том, почему переменные полезны в программировании и как их создавать, обновлять и использовать. Вы экспериментировали с различными базовыми типами данных в Kotlin, включая типы данных Int, Double, String и Boolean. Вы также узнали о разнице между ключевыми словами val и var.
 
-All of these concepts are critical building blocks on your journey to become a developer.
+Все эти понятия являются важнейшими строительными блоками на вашем пути к становлению разработчика.
 
-See you in the next codelab!
+###  Резюме
 
-# Summary
-A variable is a container for a single piece of data.
-You must declare a variable first before you use it.
-Use the val keyword to define a variable that is read-only where the value cannot change once it's been assigned.
-Use the var keyword to define a variable that is mutable or changeable.
-In Kotlin, it's preferred to use val over var when possible.
-To declare a variable, start with the val or var keyword. Then specify the variable name, data type, and initial value. For example: val count: Int = 2.
-With type inference, omit the data type in the variable declaration if an initial value is provided.
-Some common basic Kotlin data types include: Int, String, Boolean, Float, and Double.
-Use the assignment operator (=) to assign a value to a variable either during declaration of the variable or updating the variable.
-You can only update a variable that has been declared as a mutable variable (with var).
-Use the increment operator (++) or decrement operator (--) to increase or decrease the value of an integer variable by 1, respectively.
-Use the + symbol to concatenate strings together. You can also concatenate variables of other data types like Int and Boolean to Strings.
+Переменная - это контейнер для одной части данных.
+Прежде чем использовать переменную, ее нужно сначала объявить.
+Используйте ключевое слово val, чтобы определить переменную, которая доступна только для чтения, и ее значение не может измениться после присвоения.
+Ключевое слово var используется для определения переменной, которая является мутабельной или изменяемой.
+В Kotlin предпочтительнее использовать val, а не var, когда это возможно.
+Чтобы объявить переменную, начните с ключевого слова val или var. Затем укажите имя переменной, тип данных и начальное значение. Например: val count: Int = 2.
+При выводе типов можно опустить тип данных в объявлении переменной, если указано начальное значение.
+Некоторые распространенные базовые типы данных Kotlin включают: Int, String, Boolean, Float и Double.
+Используйте оператор присваивания (=), чтобы присвоить переменной значение либо при объявлении переменной, либо при ее обновлении.
+Обновлять можно только ту переменную, которая была объявлена как изменяемая (с помощью var).
+Используйте оператор инкремента (++) или декремента (--), чтобы увеличить или уменьшить значение целочисленной переменной на 1, соответственно.
+Используйте символ + для объединения строк. Вы также можете объединять в строки переменные других типов данных, например Int и Boolean.
