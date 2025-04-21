@@ -1,4 +1,4 @@
-# Введение в корутины в Android Studio
+# Практическая работа. Корутины
 
 ### Прежде чем начать
 
@@ -51,12 +51,10 @@
 ### Получите стартовый код
 
 - Чтобы начать работу, cклонируйте репозиторий для этого кода:
-
-```
-$ git clone https://github.com/google-developer-training/basic-android-kotlin-compose-training-race-tracker.git
-$ cd basic-android-kotlin-compose-training-race-tracker
-$ git checkout starter
-```
+- скачайте из ресурсов race-tracker.7z
+- откройте через cmd
+- cd race-tracker
+- git checkout starter
 
 ### Прохождение стартового кода
 
