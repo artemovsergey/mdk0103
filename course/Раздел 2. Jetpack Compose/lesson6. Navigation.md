@@ -45,11 +45,10 @@
 
 ### Скачайте стартовый код
 
-```
-$ git clone https://github.com/google-developer-training/basic-android-kotlin-compose-training-cupcake.git
-$ cd basic-android-kotlin-compose-training-cupcake
-$ git checkout starter
-```
+- скачайте в repositories репозиторий capcake
+- распакуйте и перейдите в проект
+- git checkout starter
+
 
 ### Знакомство с приложением
 
